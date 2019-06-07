@@ -1,11 +1,29 @@
 <template>
-<div class="q-pa-xs row ">
-    <div v-if="myEvent">
-        {{stats}} {{event}}
+<div class="q-pa-xs">
+    <div v-if="myEvent" class="row">
+        <div class="row">
+            <q-chip class="bg-purple text-white" dense square>
+                <q-avatar class="bg-yellow text-black">
+                    {{stats.applications}} 
+                </q-avatar>
+                applied
+            </q-chip>
+
+            <q-chip class="bg-green-4 text-black" dense square>
+                <q-avatar class="bg-primary text-white">
+                    {{stats.selected}} 
+                </q-avatar>
+                selected
+            </q-chip>     
+        </div>
+        <q-btn v-if="stats.applications > 0" class="col-12 q-mt-sm q-px-sm" color="brown-7"
+        label="Manage Applications" dense 
+        @click="$router.push({name:'manage',params:{id:event.id}}) " /> 
+
     </div>
 
     <div v-else>
-        <q-btn label="Create an Event" />
+        Create Events like these and hire according to your needs.
     </div>    
 
 </div>

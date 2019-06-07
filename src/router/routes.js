@@ -23,6 +23,7 @@ const routes = [
       { path: 'signup', name:'signup',component: () => import('pages/signup.vue'), meta:'an' },
       { path: 'forgot', name:'forgot',component: () => import('pages/forgot.vue'), meta:'an' },
       { path: 'u/:id', name:'user',component: () => import('pages/user.vue'), meta:'adm' },
+      { path: 'e/:id/manage', name:'manage',component: () => import('pages/manage.vue'), meta:'adm' },
       { path: 'e/:id', name:'event',component: () => import('pages/event.vue'), meta:'adm' }
 
     ]
