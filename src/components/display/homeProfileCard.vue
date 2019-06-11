@@ -47,7 +47,7 @@ export default {
 
 <style scoped>
 .name{
-    font-size:1.3em;
+    font-size:1.1em;
 }
 .walletText{
     font-size: 0.9em;

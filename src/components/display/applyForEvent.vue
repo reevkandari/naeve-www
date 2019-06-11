@@ -16,12 +16,8 @@
         {{currStatusDict[status] }}
     </div>
     <!--If status is vrigin, try applying for event-->
-    <q-btn v-if="status=='virgin'" label="I'm Interested" color="primary" @click="act('interest')" />
-    <!--If offer has been made allow to accept of decline-->
-    <div v-if="status=='offer'" class="row justify-around">
-        <q-btn class="col-5" label="Decline" color="red" @click="act('decline')"/>
-        <q-btn  class="col-5" label="Accept" color="primary" @click="act('accept')"/>            
-    </div>   
+    <q-btn v-if="status=='virgin'" label="Apply Now" color="primary" @click="act('apply')" />
+             
     <!-- If you were selected back out-->
     <q-btn v-if="status=='selected'" label="Back-Out" color="brown-5" @click="act('backout')" />
 </div>
@@ -86,12 +82,11 @@ export default {
             currStatusDict:{
                 virgin:"You have not yet applied for this event",
                 closed:"This event is not accepting applications",
-                interest:"You have already applied for this event",
-                offer:"The recruiter has offered to select you",
-                decline:"The recruiter offered to select you. But you declined",
+                applied:"You have already applied for this event",
+                unfit:"You were not fit for this event",
                 selected:"You have been selected for the event",
-                backout:"You accepted the offer and later declined to attend the event",
-                adverse:"You were selected, but did not sucesfully complete the event",                
+                backout:"You were selected but chose to backout of the event",
+                adverse:"You were selected, But did not sucesfully complete the event",                
                 complete:"You successfully completed this event",
             },
             btn:{

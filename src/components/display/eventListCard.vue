@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row q-pb-xs">
     <span class="venuKey q-pr-xs"> Venue : </span>
     <span class="venuVal">{{inp.venue}}</span>
 </div>
@@ -26,12 +26,12 @@
 
 <!--Core Data Points-->
 
-<div class="row justify-around q-pt-sm">
-    <div v-for="(item,index2) in dataPoints" :key="index2" class="col-3">
-        <div class="full-width text-subtitle2">
+<div class="row justify-between q-pt-sm">
+    <div v-for="(item,index2) in dataPoints" :key="index2" class="col-auto">
+        <div class="full-width itemKey text-center">
             {{item.label}}
         </div>
-        <div class="full-width text-capitalize">
+        <div class="full-width itemVal text-capitalize text-center">
             {{eventsHuman[item.key]}}
         </div>
     </div>
@@ -67,8 +67,9 @@ export default {
             dataPoints:[
                 {key:'pay_per_day',label:'Per Day'},
                 {key:'begin', label:'Date'},
+                {key:'strength', label:'Total'},
                 {key:'days', label:'Days(#)'},
-                {key:'gender', label:'Gender'}
+                //{key:'gender', label:'Gender'}
             ],
             color:{
                 'pending':'grey-7',
@@ -76,6 +77,20 @@ export default {
                 'held':'green',
                 'cancel':'red-7',
                 'complete':'orange',
+            },
+            genderDict:{
+                male:{
+                    single:'Boy',
+                    plural:'Boys'
+                },
+                female:{
+                    single:'Girl',
+                    plural:'Girls'
+                },
+                all:{
+                    single:'Person',
+                    plural:'People'
+                }
             }
         }
     },
@@ -84,12 +99,15 @@ export default {
             return this.inp;
         },
         eventsHuman(){
-            var currEvent = this.inp; 
+            var currEvent = this.inp;
+            var gender = currEvent['gender'];
+            var strengthForm = (currEvent['strength'] > 1) ? 'plural' : 'single'; 
             return {
                 pay_per_day:currEvent['pay_per_day'] + " ₹",
                 begin:this.$options.filters.dateHuman(currEvent['begin']),
                 days:currEvent['days'],
-                gender:currEvent['gender']            
+                strength:currEvent['strength'] +' '+ 
+                this.genderDict[gender][strengthForm]
             }            
         }
     }
@@ -110,10 +128,20 @@ export default {
     font-size: 1.15em;
 }
 .venuKey{
+    font-family: 'Noto Sans';
     font-size: 1.2em;
-    font-weight: 450;
+    font-weight: bold;
 }
 .venuVal{
+    font-family: 'Noto Sans';
     font-size: 1.15em;
+}
+.itemKey{
+    padding-bottom: 2px;
+    font-size:1.15em;
+    font-weight: 450;
+}
+.itemVal{
+    font-size: 1.05em;
 }
 </style>
