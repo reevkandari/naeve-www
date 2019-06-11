@@ -38,7 +38,7 @@ export default {
     },
     computed:{
         me(){
-            return this.$store.getters['user/id'];
+            var myId =  this.$store.getters['user/id'];
             return (this.id == myId);
         }
     },

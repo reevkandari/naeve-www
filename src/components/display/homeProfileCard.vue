@@ -35,7 +35,7 @@
 export default {
     computed:{
         wallet(){
-            var val = 5500;//this.profile.wallet;
+            var val = this.profile.wallet;
             return (val > 999) ? (val/1000).toFixed(1)+'k' : val;
         },
         profile(){
@@ -47,7 +47,7 @@ export default {
 
 <style scoped>
 .name{
-    font-size:1.3em;
+    font-size:1.1em;
 }
 .walletText{
     font-size: 0.9em;

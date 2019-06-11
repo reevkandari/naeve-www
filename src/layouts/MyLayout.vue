@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR lff" class="bg">
+  <q-layout view="hHh lpR fff" class="bg">
     <q-header elevated>
       <q-toolbar class="row bg-grey-9" :class="{'justify-center':$q.platform.is.desktop}">
         <div class="col-lg-10 col-md-10 col-xl-10 col-12 row items-center">
@@ -11,9 +11,8 @@
 
           <q-space />
 
-
-          <q-tabs  shrink inline-label>
-            <q-route-tab dense  v-for="(item,index) in navigation" :key="index" 
+          <q-tabs shrink inline-label>
+            <q-route-tab dense shrink v-for="(item,index) in navigation" :key="index" 
              :name=item.name  :to=item.to :label=item.label :icon=item.icon />             
           </q-tabs>
 
@@ -21,13 +20,13 @@
       </q-toolbar>
     </q-header>
 
-    <q-page-container class="row justify-center screen-height">
+    <q-page-container class="page row justify-center screen-height">
       <router-view class="col-xl-10 col-lg-10 col-md-10 col-12 justify-center"
        :class="{'q-py-md':$q.platform.is.desktop}" />    
     </q-page-container>
 
 
-    <q-footer class="bg-grey-10 text-white q-py-md ">
+    <q-footer class="bg-grey-10 text-white q-py-sm ">
       <div class="row justify-center">
         <div class="text-center col-xl-8 col-lg-8 col-md-8 col-11">
           <q-chip  color="grey-9" dense text-color="white" square v-for="(item,index) in footerMenu" :key="index">
@@ -99,7 +98,7 @@ export default {
 
 <style>
 .footerChip{
-  font-size: 1.0  em;
+  font-size: 1.1em;
   text-decoration: none;
 }
 .toolBarLogo{
@@ -112,4 +111,9 @@ export default {
 .bg{
   background-color:aliceblue;
 }
+.page{
+  min-height: 100vh;
+}
 </style>
+
+

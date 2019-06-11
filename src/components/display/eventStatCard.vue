@@ -1,11 +1,21 @@
 <template>
-<div class="q-pa-xs row ">
-    <div v-if="myEvent">
-        {{stats}} {{event}}
+<div class="q-pa-xs">
+    <div v-if="myEvent" class="row">
+        <div class="col-12">
+            <q-chip square class="bg-primary text-white" dense>
+                {{stats.applications}} interested
+            </q-chip>
+            <q-chip square class="bg-grey-7 text-white" dense>
+                {{stats.selected}} selected
+            </q-chip>            
+        </div>
+        <q-btn class="full-width q-mt-sm" color="red" label="Manage Applications" 
+        @click="$emit('manage')" />
+
     </div>
 
-    <div v-else>
-        <q-btn label="Create an Event" />
+    <div v-else class="notMyEvent">
+        You may also create events and hire people
     </div>    
 
 </div>
@@ -51,5 +61,8 @@ export default {
 </script>
 
 <style>
-
+.notMyEvent{
+    font-family:'Poppins';
+    font-size:1.2em;
+}
 </style>

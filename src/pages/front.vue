@@ -110,11 +110,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-
-
 .caraousel{
     padding:0px;
-    width:100vw;
+    width:100%;
 }
 
 .my-custom-card
