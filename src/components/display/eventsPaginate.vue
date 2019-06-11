@@ -107,8 +107,8 @@ export default {
                 this.allEvents = concat(allEvents, res.data);
                 this.lastPage = (res.data.length < this.limit) ? currPage : currPage+1;
             }else{
-                this.page = currPage - 1;
-                this.lastPage = this.page;                
+                this.page = (this.page == 1) ? 1 : currPage - 1;
+                this.lastPage = this.page;
             }
 
         }
