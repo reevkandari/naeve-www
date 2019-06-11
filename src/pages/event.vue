@@ -31,7 +31,7 @@
 </div>
 
 <q-dialog v-model="manageModal" persistent full-width position="top" >
-    <manage :id=event.id   />
+    <manage :inp=manageInp  @statModified="fetchStats" />
 </q-dialog>
 
 </q-no-ssr>
@@ -46,7 +46,7 @@ import applyForEvent from  'components/display/applyForEvent';
 import eventStatCard from 'components/display/eventStatCard';
 import manage from 'components/display/manage';
 
-import {pick} from  'lodash';
+import {pick, merge} from  'lodash';
 
 export default{
     preFetch ({ store, currentRoute }) {
@@ -89,15 +89,24 @@ export default{
             this.store.dispatch('page/fetch',inp);            
         }
     },
+    methods:{
+        async fetchStats(){
+            var res = await this.$axios.get('event_stats',{ params : {id:this.event.id} });
+            this.$store.commit('page/extend',res.data);
+        }
+    },
     computed:{
         recruiter(){
             return this.$store.getters['user/recruiter'];
         },
         eventStats(){
-            return pick(this.event,['id','user_id','status','begin','end'])
+            return pick(this.event,['applications','selected','strength'])
         },        
         event(){
             return this.$store.getters["page/default"];
+        },
+        manageInp(){
+            return merge(this.eventStats, pick(this.event,['id','status']) )          
         },
         recruiterDetails() {
             return pick(this.event,['name','bio','avatar','user_id', 'recruiter']);
