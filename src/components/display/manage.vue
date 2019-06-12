@@ -20,12 +20,13 @@
 <div class="col-xl-8 col-lg-8 col-md-8 col-12">
     <q-list separator class="">
         <q-item dense class="row shadow-2 bg-white q-mb-sm" v-for="(item, index) in applies" :key="index">
+            <!--
             <q-item-section avatar class="col-auto">
                 <q-icon name="star" class="text-orange" size="20px"
                  :class="{'hide':item.status!='selected'}" />
 
             </q-item-section> 
-                        
+            -->
             <q-item-section avatar class="col-auto">
             <q-avatar class="shadow-1">
                 <img :src="item.avatar | ourMedia"  />
@@ -37,38 +38,42 @@
                 target="_blank">
                     <span class="name">{{item.name}}</span>
                 </router-link>
-                <span class="statusText">{{statusText[item.status]}}</span>
+                <span class="statusText">{{statusInfo[item.status][0]}}</span>
             </q-item-section>
-           
-            <q-space />
-            <q-item-section class="col-auto">
+            <q-space />       
+
+            <q-item-section class="col-auto text-capitalize">
+                <!--
                 <q-icon v-if="['selected','applied','completed'].indexOf(item.status) >-1" 
                     name="keyboard_arrow_down" size="25px" class="cursor-pointer">
-                <q-menu >
-                    <q-list style="min-width: 10vw" separator bordered>
-                        <q-item v-for="(item2,index) in actionsAvailable[item.status]" 
-                        :key=index v-if="!(item2=='select' && full)"
-                        dense clickable @click.native="act(item2,item)" v-close-popup >
-                            <q-item-section class="text-capitalize">
-                                {{item2}}
-                            </q-item-section>
-                        </q-item>         
-                    </q-list>
-                </q-menu>                    
+
+                    -->
+                <q-chip square dense :color=statusInfo[item.status][1] 
+                :text-color=statusInfo[item.status][2] class="cursor-pointer menuChip">
+                    {{item.status}} 
+                    <q-avatar v-if="actionsAvailable[item.status]" class="q-pl-sm" >
+                        <q-icon name="keyboard_arrow_down" size="25px">
+                        </q-icon>
+                    </q-avatar>
+                    <q-menu fit>
+                        <q-list separator bordered >
+                            <q-item  v-for="(item2,index) in actionsAvailable[item.status]" 
+                            :key="index" 
+                            dense clickable @click.native="act(item2,item)" v-close-popup >
+                                <q-item-section class="text-capitalize">
+                                    {{item2}}
+                                </q-item-section>
+                            </q-item>         
+                        </q-list>
+                    </q-menu>
+                </q-chip>                    
+                <!--
                 </q-icon>
-                <q-icon v-else class="text-red" name="error" size="25px" /> 
+                <q-icon disabled v-else class="text-red" name="cancel" size="20px" /> 
+
+                -->
 
                 
-<!--
-                <div v-if="item.status=='interest'" class="col-auto">
-                    <q-btn dense label="Offer" class="q-mr-md" color="red" />
-                    <q-btn dense label="Mark Unfit" color="indigo"/>      
-                </div>
-
-                <q-btn v-if="['selected','interest','complete'].indexOf(item.status) >-1" 
-                :label="actBtnLabel[item.status]"
-                color="primary" dense @click="act('offer',item)" /> 
-                -->
             </q-item-section>
         </q-item>
     </q-list>    
@@ -131,13 +136,14 @@ export default {
                 'selected':['fire'],
                 'completed':['adverse']
             },
-            statusText:{
-                'applied':'has applied',
-                'selected':'has been selected',
-                'unfit':'was marked unfit',
-                'backout':'backed out of the event',
-                'adverse':'was marked adverse',
-                'complete':'has completed the event'
+            statusInfo:{
+                'applied':['has applied','blue-3','white'],
+                'selected':['has been selected','indigo','white'],
+                'fired':['was fired by you','orange','black'],
+                'unfit':['was marked unfit','black','white'],
+                'backout':['backed out of the event','yellow','black'],
+                'adverse':['was marked adverse','green-3','black'],
+                'complete':['has completed the event','brown','white']
             }
         }
     },
@@ -197,5 +203,11 @@ export default {
 .confirmBox{
     border:5px solid brown;
     max-width:700px;
+}
+.menuChip{
+    font-family:'Raleway';
+    font-size:105%;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 </style>

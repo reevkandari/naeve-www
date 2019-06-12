@@ -26,7 +26,7 @@ function dateHuman(val){
 }
 
 function dateHumanFull(val){
-    return date.formatDate(val, 'Do MMMM YYYY');
+    return date.formatDate(val, 'Do MMMM,  YYYY');
 }
 
 function formatName(val){

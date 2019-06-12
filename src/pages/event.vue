@@ -18,7 +18,7 @@
     <div class="col-xl-3 col-lg-3 col-md-3 col-12 row justify-center " >
         <div class="col-xl-11 col-lg-11 col-md-11 col-12" :class="{'q-mt-md':$q.platform.is.mobile}" >
             <div class="bg-white shadow-3">
-                <eventStatCard v-if=recruiter :inp=eventStats @manage="manageModal = true" />
+                <eventStats v-if=recruiter :inp=eventStats @manage="manageModal = true" />
                 <applyForEvent v-else :id=event.id />
             </div>          
         </div>
@@ -43,7 +43,7 @@ import eventDetails from 'components/display/eventDetails';
 import eventListCard from  'components/display/eventListCard';
 import trendingEvents from  'components/display/trendingEvents';
 import applyForEvent from  'components/display/applyForEvent';
-import eventStatCard from 'components/display/eventStatCard';
+import eventStats from 'components/display/eventStats';
 import manage from 'components/display/manage';
 
 import {pick, merge} from  'lodash';
@@ -75,7 +75,7 @@ export default{
         eventListCard,
         trendingEvents,
         applyForEvent,
-        eventStatCard,
+        eventStats,
         manage      
     },
     data(){

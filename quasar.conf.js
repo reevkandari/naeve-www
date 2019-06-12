@@ -73,7 +73,15 @@ module.exports = function (ctx) {
       plugins: [
         'Notify',
         'Meta'
-      ]  
+      ],
+      config: {
+        notify: {
+          color:'primary',
+          classes:'notify',
+          timeout:"1300",
+          position:'center'          
+        }
+      }        
 
       // iconSet: 'ionicons-v4'
       // lang: 'de' // Quasar language
