@@ -61,7 +61,11 @@ module.exports = function (ctx) {
         'QList',
         'QItem',
         'QItemSection',
-        'QMenu'
+        'QMenu',
+        'QBadge',
+        'QInnerLoading',
+        'QSpinnerGears',
+        'QTab'
       ],
 
       directives: [

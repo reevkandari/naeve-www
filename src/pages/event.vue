@@ -30,7 +30,7 @@
     <img class="col-2" src="~assets/sad.svg" />
 </div>
 
-<q-dialog v-model="manageModal" persistent full-width position="top" >
+<q-dialog  v-model="manageModal" maximized fullscreen >
     <manage :inp=manageInp  @statModified="fetchStats" />
 </q-dialog>
 
@@ -100,13 +100,13 @@ export default{
             return this.$store.getters['user/recruiter'];
         },
         eventStats(){
-            return pick(this.event,['applications','selected','strength'])
+            return pick(this.event,['applications','selected','strength','pay_per_day'])
         },        
         event(){
             return this.$store.getters["page/default"];
         },
         manageInp(){
-            return merge(this.eventStats, pick(this.event,['id','status']) )          
+            return merge(this.eventStats, pick(this.event,['id','status','begin']) )          
         },
         recruiterDetails() {
             return pick(this.event,['name','bio','avatar','user_id', 'recruiter']);

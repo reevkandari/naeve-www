@@ -3,7 +3,7 @@
      {{id}}
     <q-btn v-if="me" label="Upload Photos" class="q-px-sm" dense color="primary"  
     @click="$refs.newPhoto.click()">
-      <input @change="cropModal = true" ref="newPhoto"  type="file"
+      <input @change="uploadMedia" ref="newPhoto"  type="file"
       accept="image/x-png,image/gif,image/jpeg" style="display:none"/>   
     </q-btn>    
     <div v-if="media.length == 0" class="q-pa-sm">
@@ -24,7 +24,6 @@ export default {
     props:['id'],
     data(){
         return{
-            cropModal:false,
             media:[]
         }
     },
@@ -33,8 +32,12 @@ export default {
             var res = await this.$axios.get('media',{params:{id:this.id}});
             this.media = res.data;
         },
-        async uploadAvatar(){  
-        },        
+        async uploadMedia(){
+            var newMedia = this.$refs.newPhoto.files[0];
+            formData.append('newMedia',newMedia);
+            await this.$axios.post('new_media',formData);
+            this.getMyMedia();
+        },
     },
     computed:{
         me(){

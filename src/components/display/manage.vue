@@ -15,24 +15,36 @@
             {{event[key]}} {{val.label}} 
             </q-chip>
         </div>
+        <div class="desktop-only recGyan full-width q-pa-sm bg-white shadow-3 q-mt-sm">
+            <div v-if="full">
+                Positions are full for this event.
+            </div>
+            <div>
+                Firing people will attract a penalty. 
+                <br>
+                Carefully review users before selecting them.
+            </div>            
+        </div>
     </div>
 </div>
-<div class="col-xl-8 col-lg-8 col-md-8 col-12">
-    <q-list separator class="">
-        <q-item dense class="row shadow-2 bg-white q-mb-sm" v-for="(item, index) in applies" :key="index">
-            <!--
-            <q-item-section avatar class="col-auto">
-                <q-icon name="star" class="text-orange" size="20px"
-                 :class="{'hide':item.status!='selected'}" />
 
-            </q-item-section> 
-            -->
+<div class="col-xl-8 col-lg-8 col-md-8 col-12">
+    <div class="bg-grey-2 shadow-3">
+        <!--Upper Tabs-->
+        <q-tabs  class="bg-primary text-white" dense v-model="showFrom" align="left">
+            <q-tab dense v-for="(val,key) in statusInfo" :key=key :name=key :label=key />
+        </q-tabs>
+
+    <q-list separator>
+        <q-item dense class="row q-my-xs" v-for="(item, index) in currApplies" :key="index">
+            <!--Avatar-->
             <q-item-section avatar class="col-auto">
             <q-avatar class="shadow-1">
                 <img :src="item.avatar | ourMedia"  />
             </q-avatar>
             </q-item-section>
 
+            <!--Name Status-->
             <q-item-section class="col-auto">
                 <router-link :to="{name:'user',params:{id:item.user_id}}" class="noDeco" 
                 target="_blank">
@@ -40,14 +52,18 @@
                 </router-link>
                 <span class="statusText">{{statusInfo[item.status][0]}}</span>
             </q-item-section>
-            <q-space />       
+            <q-item-section class="col-auto  text-center desktop-only">
+                <q-chip dense>
+                    <q-avatar class="bg-green-6 text-white" size="25px">
+                        <q-icon name="phone" size="20px" />
+                    </q-avatar>
+                    {{item.mobile}}
+                </q-chip>   
+            </q-item-section>
+            <q-space />
+            <!--Actions-->
 
             <q-item-section class="col-auto text-capitalize">
-                <!--
-                <q-icon v-if="['selected','applied','completed'].indexOf(item.status) >-1" 
-                    name="keyboard_arrow_down" size="25px" class="cursor-pointer">
-
-                    -->
                 <q-chip square dense :color=statusInfo[item.status][1] 
                 :text-color=statusInfo[item.status][2] class="cursor-pointer menuChip">
                     {{item.status}} 
@@ -56,29 +72,47 @@
                         </q-icon>
                     </q-avatar>
                     <q-menu fit>
-                        <q-list separator bordered >
-                            <q-item  v-for="(item2,index) in actionsAvailable[item.status]" 
-                            :key="index" 
+                        <q-list separator>
+                            <span  v-for="(item2,index) in actionsAvailable[item.status]" 
+                            :key="index">                            
+                            <q-item class="bg-grey-4" v-if="showMenuItem(item2)"
                             dense clickable @click.native="act(item2,item)" v-close-popup >
                                 <q-item-section class="text-capitalize">
                                     {{item2}}
                                 </q-item-section>
-                            </q-item>         
+                            </q-item>
+                            </span>         
                         </q-list>
                     </q-menu>
-                </q-chip>                    
-                <!--
-                </q-icon>
-                <q-icon disabled v-else class="text-red" name="cancel" size="20px" /> 
-
-                -->
-
-                
+                </q-chip>
+                <q-chip dense class="mobile-only">
+                    <q-avatar class="bg-green-6 text-white" size="25px">
+                        <q-icon name="phone" size="20px" />
+                    </q-avatar>
+                    {{item.mobile}}
+                </q-chip>                
             </q-item-section>
+            <!--Actions Above-->            
         </q-item>
-    </q-list>    
+
+
+        <!--SPINNER LOADING-->
+        <q-inner-loading :showing="loading">
+            <q-spinner-gears size="40px" color="primary" />
+        </q-inner-loading>        
+        <!--SPINNER LOADING-->
+    </q-list>
+    <div class="q-pa-xs recGyan text-center" v-if="currApplies.length<1">
+        {{statusInfo[showFrom][3]}}
+    </div>
+
+    </div>
 </div>
 
+
+
+
+<!--Confirm Action-->
 <q-dialog v-model="confirmBox"  position="top" >
       <q-card class="bg-white q-mt-md confirmBox" >
         <q-card-section>
@@ -97,7 +131,7 @@
         </q-card-actions>
       </q-card>    
 </q-dialog>
-
+<!--Confirm Action-->
 
 
 </div>
@@ -106,14 +140,16 @@
 </template>
 
 <script>
+
 export default {
     props:['inp'],
     data(){
         return{
+            showFrom:'applied',
             chip:{
                 strength:{color:'orange-8',label:'required'},
-                applications:{color:'primary',label:'applied'},
-                selected:{color:'brown',label:'selected'}
+                selected:{color:'brown',label:'selected'},
+                applications:{color:'primary',label:'applied'}
             },            
             user:{},
             confirmBox:false,
@@ -129,7 +165,7 @@ export default {
                 select:"Firing them from the event later will result in a penalty",
                 adverse:"Our team will further investigate the matter",
                 unit:"You will not be able to select them later",
-                fire:"You will have to pay them 10% of the per day amount as compensation"
+                fire:"You will have to pay 10% of the per day amount as compensation"
             },
             actionsAvailable:{
                 'applied':['select','unfit'],
@@ -137,17 +173,26 @@ export default {
                 'completed':['adverse']
             },
             statusInfo:{
-                'applied':['has applied','blue-3','white'],
-                'selected':['has been selected','indigo','white'],
-                'fired':['was fired by you','orange','black'],
-                'unfit':['was marked unfit','black','white'],
-                'backout':['backed out of the event','yellow','black'],
-                'adverse':['was marked adverse','green-3','black'],
-                'complete':['has completed the event','brown','white']
+                'applied':['has applied','pink','white','No New/Pending applications so far'],
+                'selected':['has been selected','indigo','white',"You haven't selected anyone"],
+                'fired':['was fired by you','orange','black',"You haven't fired anyone"],
+                'unfit':['was marked unfit','black','white',"You haven't marked anyone as unfit"],
+                'backout':['backed out of the event','yellow','black',"Nobody has backed out so far"],
+                'adverse':['was marked adverse','green','black',"No adverse users on this event"],
+                'complete':['has completed the event','brown','white',"Even't not yet completed"]
             }
         }
     },
     computed:{
+        currApplies(){
+            var currApplies = [];
+            var currStatus = this.showFrom;
+            for(var i=0; i<this.applies.length; i++){
+                var item = this.applies[i];
+                if(item.status==currStatus) currApplies.push(item);
+            }
+            return currApplies;
+        },
         event(){
             return this.inp;
         },
@@ -173,8 +218,14 @@ export default {
             
         },
         async fetchApplications(){
+            this.loading=true;
             var res = await this.$axios.get('applications',{params:{eventId:this.event.id}});
             this.applies = res.data;
+            this.loading=false;
+        },
+        showMenuItem(item){
+            return !(item=='select' && this.full);
+            
         }
     },
     created(){
@@ -186,7 +237,7 @@ export default {
 <style>
 .name{
     font-family: 'Poppins';
-    font-size: 1.2em;
+    font-size: 1.15em;
 }
 .actionResult{
     font-family: 'Poppins';
@@ -206,8 +257,13 @@ export default {
 }
 .menuChip{
     font-family:'Raleway';
-    font-size:105%;
+    font-size:1.0em;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
+}
+.recGyan{
+    font-family:'Ubuntu';
+    font-size:1.2em;
+    line-height: 140%;
 }
 </style>
