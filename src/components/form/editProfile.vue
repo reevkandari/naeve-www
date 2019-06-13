@@ -48,7 +48,7 @@
                 :guides="true"
                 :view-mode="2"
                 drag-mode="crop"
-                :auto-crop-area="0.5"
+                :auto-crop-area="1.0"
                 :max-container-width="300"
                 :max-container-height="300"
                 :background="true"

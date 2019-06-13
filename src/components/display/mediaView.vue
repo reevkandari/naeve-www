@@ -9,23 +9,39 @@
     <div v-if="media.length == 0" class="q-pa-sm">
         <span class="text-subtitle1 "> 
         {{ (me) ? "You haven't uploaded any" : 'No'}}    Photos yet
-        </span> 
+        </span>
+        <lightbox :images="images"></lightbox>
     </div>
     <div v-else class="row q-py-sm">
         <div class="col-3 q-pa-sm cursor-pointer" v-for="(item,index) in media" :key="index">
             <img class="galleryItem"  :src="item.name | ourMedia" />
+            
         </div>
     </div>
 </div>
 </template>
 
 <script>
+import lightbox from 'vlightbox';
+
 export default {
     props:['id'],
+    components: {
+        lightbox
+    },
     data(){
         return{
             cropModal:false,
-            media:[]
+            media:[],
+            images: [
+    {
+        src: 'https://unsplash.it/500',
+        caption: 'Image 1',
+    },
+    {
+        src: 'https://unsplash.it/501',
+    },
+],
         }
     },
     methods:{
@@ -38,13 +54,13 @@ export default {
     },
     computed:{
         me(){
-            return this.$store.getters['user/id'];
+            var myId =   this.$store.getters['user/id'];
             return (this.id == myId);
         }
     },
     created(){
         this.getMyMedia();
-    }
+    },
 }
 </script>
 
