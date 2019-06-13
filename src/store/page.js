@@ -1,10 +1,5 @@
 import {api} from 'boot/axios';
-/*
-var isNode = require('detect-node');
-import axios from 'axios';
-const api = axios.create();
-axios.defaults.baseURL = isNode ? process.env.api_ip : process.env.api_proxy_path;
-*/
+import {merge} from 'lodash';
 
 export default {
     namespaced: true,
@@ -17,6 +12,9 @@ export default {
     mutations:{
         set(state,data){
             state.page = data;
+        },
+        extend(state,data){
+            state.page = merge(state.page,data);
         }
     },
     actions:{

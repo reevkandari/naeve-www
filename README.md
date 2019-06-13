@@ -9,8 +9,8 @@ The backend is a sepratate entity that runs on node js and Mysql.
 
 # Steps to set this up
 * Clone Repo
-* npm install
-* npm run dev
+* Strictly use Yarn!!. NPM is causing issues.
+* run qusaar dev -m ssr
 
 
 

@@ -18,17 +18,21 @@
     <div class="col-xl-3 col-lg-3 col-md-3 col-12 row justify-center " >
         <div class="col-xl-11 col-lg-11 col-md-11 col-12" :class="{'q-mt-md':$q.platform.is.mobile}" >
             <div class="bg-white shadow-3">
-                <eventStatCard v-if=recruiter :inp=eventStats />
-                <applyForEvent v-else :id=this.event.id />
+                <eventStats v-if=recruiter :inp=eventStats @manage="manageModal = true" />
+                <applyForEvent v-else :id=event.id />
             </div>          
         </div>
     </div>
+</div>
 
-</div>    
 
 <div v-else class="row justify-center">
     <img class="col-2" src="~assets/sad.svg" />
 </div>
+
+<q-dialog v-model="manageModal" persistent full-width position="top" >
+    <manage :inp=manageInp  @statModified="fetchStats" />
+</q-dialog>
 
 </q-no-ssr>
 </q-page>
@@ -39,9 +43,10 @@ import eventDetails from 'components/display/eventDetails';
 import eventListCard from  'components/display/eventListCard';
 import trendingEvents from  'components/display/trendingEvents';
 import applyForEvent from  'components/display/applyForEvent';
-import eventStatCard from 'components/display/eventStatCard';
+import eventStats from 'components/display/eventStats';
+import manage from 'components/display/manage';
 
-import {pick} from  'lodash';
+import {pick, merge} from  'lodash';
 
 export default{
     preFetch ({ store, currentRoute }) {
@@ -70,7 +75,13 @@ export default{
         eventListCard,
         trendingEvents,
         applyForEvent,
-        eventStatCard        
+        eventStats,
+        manage      
+    },
+    data(){
+        return{
+            manageModal : false
+        }
     },
     watch:{
         $route(val){
@@ -78,15 +89,24 @@ export default{
             this.store.dispatch('page/fetch',inp);            
         }
     },
+    methods:{
+        async fetchStats(){
+            var res = await this.$axios.get('event_stats',{ params : {id:this.event.id} });
+            this.$store.commit('page/extend',res.data);
+        }
+    },
     computed:{
         recruiter(){
             return this.$store.getters['user/recruiter'];
         },
         eventStats(){
-            return pick(this.event,['id','user_id','status','begin','end'])
+            return pick(this.event,['applications','selected','strength'])
         },        
         event(){
             return this.$store.getters["page/default"];
+        },
+        manageInp(){
+            return merge(this.eventStats, pick(this.event,['id','status']) )          
         },
         recruiterDetails() {
             return pick(this.event,['name','bio','avatar','user_id', 'recruiter']);
@@ -100,3 +120,16 @@ export default{
 
 
 </script>
+
+<style scoped>
+
+@media only screen and (max-width: 1200px) {
+    .manageModal{
+        min-width:100vw;
+    }
+}
+
+.manageModal{
+    min-width:70vw;
+}
+</style>

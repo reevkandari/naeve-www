@@ -1,6 +1,6 @@
 <template>
 <div>
-  Wallet page
+{{user}}
 </div>
 </template>
 
@@ -8,8 +8,13 @@
 export default {
     data(){
         return{
-      
+
         }
+    },
+    computed:{
+      user(){
+        return this.$store.getters['user/profile'];
+      }
     }
 }
 </script>

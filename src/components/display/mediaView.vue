@@ -54,7 +54,11 @@ export default {
     },
     computed:{
         me(){
+<<<<<<< HEAD
             var myId =   this.$store.getters['user/id'];
+=======
+            var myId =  this.$store.getters['user/id'];
+>>>>>>> 18864319f4d07a566b8810720566133f2140e00f
             return (this.id == myId);
         }
     },

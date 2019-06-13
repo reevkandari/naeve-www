@@ -2,8 +2,11 @@
 <div>
 <!-- Upper Toolbar -->
 <div class="row items-center q-pa-xs q-mb-md bg-white shadow-3">    
-    <div class="col-9">
-        <div class="q-pl-sm text-subtitle2">Page {{page}}</div>
+    <div class="col-9 row">
+        <div class="col-2 text-subtitle2">Page {{page}}</div>
+        <div class="col-10 text-subtitle2 text-center">
+        {{(recruiter) ? 'My Events' : 'New Events'}}
+        </div>
     </div>
     <div class="col-3 text-right">
         <q-btn dense flat icon="chevron_left" :disabled="page==1" @click="prevPage" />
@@ -104,8 +107,8 @@ export default {
                 this.allEvents = concat(allEvents, res.data);
                 this.lastPage = (res.data.length < this.limit) ? currPage : currPage+1;
             }else{
-                this.page = currPage - 1;
-                this.lastPage = this.page;                
+                this.page = (this.page == 1) ? 1 : currPage - 1;
+                this.lastPage = this.page;
             }
 
         }

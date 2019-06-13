@@ -2,7 +2,7 @@ var isNode = require('detect-node');
 import axios from 'axios';
 const api = axios.create();
 
-export default async ({ Vue, ssrContext, store}) => {
+export default async ({ Vue, ssrContext, store, router}) => {
   api.defaults.baseURL = isNode ? process.env.api_ip : process.env.api_proxy_path;
   
   api.interceptors.request.use(config=>{
@@ -26,7 +26,8 @@ export default async ({ Vue, ssrContext, store}) => {
       ssrContext.res.header("set-cookie",res.headers["set-cookie"] );
     }
     var authStatus = (res.headers.auth == 'true');
-    store.commit('user/auth',authStatus)
+    //if(store.state.user.loggedIn);
+    store.commit('user/auth',authStatus);
     if(!authStatus) store.commit('user/setProfile',false); 
     return res;
   }

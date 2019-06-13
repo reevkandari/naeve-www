@@ -37,7 +37,7 @@
         D.O.B. :  
       </div>
       <div class="col-7 detail q-mr-md">
-        {{account.dob | dateHuman}}
+        {{account.dob | dateHumanFull}}
       </div>
       <div class="col-11 q-mr-md">
         <q-separator class="q-mb-md"/>
@@ -51,7 +51,7 @@
     </div>
   </div>
   <div class="col-12 ending q-mt-md">
-    Your account was created on {{account.born}}
+    Your account was created on {{account.born | dateHumanFull}}
   </div>
 </div>
 </template>
