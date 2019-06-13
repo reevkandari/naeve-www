@@ -5,20 +5,26 @@ export default async ({ Vue, ssrContext, store}) => {
     Vue.filter('dateHumanFull',dateHumanFull);
     Vue.filter('ourMedia',ourMedia);
     Vue.filter('formatName',formatName);
+    Vue.filter('timeRelative',timeRelative);
 }
 
-function dateClean(value){
-    let diff = date.getDateDiff( new Date(Date.now()), new Date(value),  'days');
-    if(diff < 1 ) return 'today';
-    else if(diff < 2 ) return 'yesterday';
+function timeRelative(val){
+    //converting time to UTC time
+    var then = new Date(convertLocalTime(val)) ;
+    var now = new Date(Date.now()); 
 
-    /*
-    else if(diff < 8 ) return 'a few days back';
-    else if(diff < 10 ) return 'last week';
-    else if(diff < 25) return 'a few weeks back';
-    */
+    var diffMins = date.getDateDiff( now, then, 'minutes');
+    var diffHours = date.getDateDiff( now, then,'hours');
+    var diffDays = date.getDateDiff( now, then,'days');
+
+    if(diffMins < 5 ) return ' a few minutes ago';
+    else if(diffHours <= 1 ) return 'an hour ago';
+    else if(diffHours < 8 ) return diffHours +' hours ago';
+    
+    else if(diffDays < 1 ) return 'Today';
+    else if(diffDays < 7 ) return diffDays + " days ago";
     else return 'on ' + date.formatDate(value, 'Do MMMM YYYY');
-    //return diff; //date.formatDate(value, 'Do MMMM YYYY');
+
 }
 
 function dateHuman(val){
@@ -40,4 +46,9 @@ function ourMedia(value){
         if(value.includes(':')) return value;
         else return process.env.media_server_url+value;
     }
+}
+
+
+function convertLocalTime(val){
+    return date.addToDate(new Date(val), { hours: 5, minutes: 30 })
 }
