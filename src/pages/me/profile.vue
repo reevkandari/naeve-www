@@ -6,7 +6,7 @@
   </div>
   <div class="col-xl-6 col-lg-6 col-md-6 col-12" >
     <div :class="{'q-pr-md q-pt-sm':$q.platform.is.desktop,'q-pt-lg':$q.platform.is.mobile}" >
-      <mediaView :id="profile.user_id" />
+      <mediaView :id=myId />
     </div>
   </div>
 </div>
@@ -28,12 +28,16 @@ export default {
       profile:false,
     }
   },
+  computed:{
+    myId(){
+      return this.$store.getters['user/id'];
+    }
+  },
   methods:{
     async fetchProfile(){
       var res = await this.$axios.get('my_profile');
       this.profile = res.data;
-    },
-
+    }
   },
   created(){
     this.fetchProfile();

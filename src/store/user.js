@@ -12,7 +12,7 @@ export default {
             return state.profile;
         },
         id(state){
-            return state.id;
+            return state.profile.id;
         },        
         recruiter(state){
             return state.profile.recruiter;

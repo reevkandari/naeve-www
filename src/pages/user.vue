@@ -11,7 +11,7 @@
         <div class="col-11" :class="{'q-ml-md':$q.platform.is.desktop}">
             <!--This component is only for non recruiters-->
             <profileDetails v-if="!profile.recruiter" :inp="profile" class="q-mb-md bg-white shadow-3" />
-            <mediaView  :id="profile.user_id" class="q-pa-xs bg-white shadow-3" />
+            <mediaView  :id=profile.user_id class="q-pa-xs bg-white shadow-3" />
         </div>
     </div>
 
