@@ -1,3 +1,4 @@
+
 // Configuration for your app
 
 module.exports = function (ctx) {
