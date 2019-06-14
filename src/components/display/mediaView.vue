@@ -10,95 +10,90 @@
         <span class="text-subtitle1 "> 
         {{ (me) ? "You haven't uploaded any" : 'No'}}    Photos yet
         </span>
-        
-       <div>
-    <button @click="imageViewerFlag = true">点击查看图片</button>
-    <image-viewer-vue 
-        v-if="imageViewerFlag" 
-        @closeImageViewer="imageViewerFlag = false" 
-        @clickImage="clickImage"
-        :imgUrlList="imgUrlList"
-        :index="currentIndex"
-        :title="title"
-        :closable=true
-        :cyclical=false>
-    </image-viewer-vue>
+{{ this.media }}
+        <div class="q-gutter-md row items-start">
+            <q-img
+                v-for="image in media"
+                :key="image"
+                transition="fade"
+                :src="image | ourMedia"
+                style="width: 150px; cursor:pointer"
+                ratio="1"
+            />
+
+            <q-img
+                v-for="image in images"
+                :key="image"
+                transition="fade"
+                :src="image"
+                style="width: 150px; cursor:pointer"
+                ratio="1"
+                @click="openModal(image)"
+            />
+        </div>
   </div>
 
-    
-
-    </div>
     <div v-else class="row q-py-sm">
         <div class="col-3 q-pa-sm cursor-pointer" v-for="(item,index) in media" :key="index">
             <img class="galleryItem"  :src="item.name | ourMedia" />   
         </div>
     </div>
+
+    <q-dialog v-model="prompt" persistent>
+          <q-card style="min-width: 400px">
+
+            <q-card-section>
+              <q-img
+                :src="this.src"
+               />
+            </q-card-section>
+
+            <q-card-actions align="right" class="text-primary">
+              <q-btn flat label="Close" v-close-popup />
+            </q-card-actions>
+          </q-card>
+    </q-dialog>
 </div>
 </template>
 
 <script>
 
-// import 'viewerjs/dist/viewer.css'
-// import Viewer from 'v-viewer'
-import imageViewer from 'image-viewer-vue'
-
 export default {
 
     props:['id'],
     components: {
-        imageViewer
+
     },
     data(){
         return{
-<<<<<<< HEAD
-            cropModal:false,
             media:[],
-            imgUrlList: [
-        'https://picsum.photos/200/200',
-      	'https://picsum.photos/300/200',
-        'https://picsum.photos/250/200'
-      ],
-      imageViewerFlag: false,
-                currentIndex: 1,
-                title: 'hello',
-
-=======
-            media:[]
->>>>>>> origin/ree
+            images: ['../../statics/catering.jpg', '../../statics/apply.jpg', '../../statics/attend.jpg'],
+            src: '',
+            prompt: false
         }
     },
     methods:{
         async getMyMedia(){
             var res = await this.$axios.get('media',{params:{id:this.id}});
             this.media = res.data;
+            console.log(this.media)
         },
-<<<<<<< HEAD
-        async uploadAvatar(){  
-        },
-        
-        toggle() {
-
-    }
-=======
         async uploadMedia(){
             var newMedia = this.$refs.newPhoto.files[0];
             formData.append('newMedia',newMedia);
             await this.$axios.post('new_media',formData);
             this.getMyMedia();
         },
->>>>>>> origin/ree
+        openModal(image) {
+            this.src = image;
+            this.prompt = true
+        }
     },
     computed:{
         me(){
             var myId =  this.$store.getters['user/id'];
             return (this.id == myId);
         },
-        onClick(i) {
-      this.index = i;
-    },
-    clickImage(index){
-                console.log(index)
-            }
     },
     created(){
         this.getMyMedia();
@@ -111,10 +106,4 @@ export default {
     width: 100%;
 }
 
-.image {
-    height: 200px;
-    cursor: pointer;
-    margin: 5px;
-    display: inline-block;
-  }
 </style>
