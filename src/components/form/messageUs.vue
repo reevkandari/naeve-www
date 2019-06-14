@@ -2,7 +2,7 @@
 <div class="row justify-center">
     
     <q-input class="full-width" placeholder="What's the matter ?" 
-    dense outlined v-model=msg autogrow maxlength="200"/>
+    dense outlined v-model=msg autogrow maxlength="180" />
     <div class="col-9 q-pa-xs">
         <q-chip v-for="(item,index) in chips" :key="index" 
         :color=item[1] square :text-color=item[2] dense>{{item[0]}}</q-chip>
@@ -28,10 +28,11 @@ export default {
     methods:{
         async submit(){
             if(this.msg.length < 10) return;
-            var res = await this.$axios.post('support_message',{message:this.msg});
+            var msgToSend = this.$route.path+' | ' + this.msg;
+            var res = await this.$axios.post('support_message',{message:msgToSend});
             if(res.status!=202) return;
             this.$q.notify('Your Message has been sent. We will look into it ASAP.');
-            this.msg = ''
+            this.msg = '';
         }        
     }
 }

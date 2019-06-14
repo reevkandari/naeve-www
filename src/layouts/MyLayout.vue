@@ -1,6 +1,6 @@
 <template>
   <q-layout view="hHh lpR fff" class="bg">
-    <q-header elevated>
+    <q-header >
       <q-toolbar class="row bg-grey-9" :class="{'justify-center':$q.platform.is.desktop}">
         <div class="col-lg-10 col-md-10 col-xl-10 col-12 row items-center">
           <q-toolbar-title class="col-3 siteName">
@@ -10,10 +10,13 @@
           </q-toolbar-title>
 
           <q-space />
-
           <q-tabs shrink inline-label>
             <q-route-tab dense shrink v-for="(item,index) in navigation" :key="index" 
-             :name=item.name  :to=item.to :label=item.label :icon=item.icon />             
+             :name=item.name  :to=item.to :label=item.label :icon=item.icon >
+             <q-badge v-if="showBadge(item)" color="orange-5" text-color="black">
+               {{me[item.name]}}
+             </q-badge>
+            </q-route-tab>             
           </q-tabs>
 
         </div>
@@ -69,9 +72,9 @@ export default {
         {name:"Signup",to:"/signup",label:"Signup"}
       ],      
       navigationExisting:[
-        {name:"Home",to:"/home",icon:"home"},
-        {name:"Alerts",to:"/alerts",icon:"notifications"},
-        {name:"Me",to:"/me",icon:"person"}
+        {name:"home",to:"/home",icon:"home"},
+        {name:"alerts",to:"/alerts",icon:"notifications"},
+        {name:"me",to:"/me",icon:"person"}
       ],
       footerMenu: [
         {name:'About-Us',path:'/about-us'},
@@ -89,8 +92,16 @@ export default {
     navigation(){
       return (this.loggedIn) ? this.navigationExisting : this.navigationNew;
     },
+    me(){
+      return this.$store.getters['user/profile'];
+    },
     loggedIn(){
       return this.$store.getters['user/loggedIn'];
+    }
+  },
+  methods:{
+    showBadge(item){
+      return (item.name=='alerts' && this.me.alerts>0);
     }
   }
 };
