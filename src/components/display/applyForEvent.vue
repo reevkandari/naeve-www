@@ -3,7 +3,6 @@
 <!-- Toolbar -->
 <div class="row bg-green shadow-3 q-pa-xs text-center">
     <span class="col title"> {{title}} </span>
-
 </div>
 <!-- Toolbar -->
 
@@ -73,10 +72,9 @@ export default {
             action:false,
             status:false,
             warning:{
-                'accept':"By accepting this offer, you will automatically be selected for the event",
-                'decline': "You are declining a opportunity to attend this event",
+                'apply':"The recruiter may contact you before selection",
                 'backout': "Backing out after selection will result in a penalty of "+
-                process.env.penalty_amount+"₹",
+                process.env.backout_penalty_percent+"% of the per day amount",
                 "interest": "If selected by the recruiter, You will be sent an offer to confirm participation",
             },
             currStatusDict:{
@@ -88,6 +86,7 @@ export default {
                 backout:"You were selected but chose to backout of the event",
                 adverse:"You were selected, But did not sucesfully complete the event",                
                 complete:"You successfully completed this event",
+                fired:"You were fired from the event"
             },
             btn:{
 

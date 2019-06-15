@@ -29,7 +29,7 @@
 </div>
 
 <div class="col-xl-8 col-lg-8 col-md-8 col-12">
-    <div class="bg-grey-2 shadow-3">
+    <div class="bg-white  shadow-4">
         <!--Upper Tabs-->
         <q-tabs  class="bg-primary text-white" dense v-model="showFrom" align="left">
             <q-tab dense v-for="(val,key) in statusInfo" :key=key :name=key :label=key />
@@ -124,7 +124,6 @@
             </div>            
         </q-card-section>
         <q-card-actions dense align="right" class="text-primary">
-            
           <q-btn flat dense label="Cancel" v-close-popup />
           <q-btn flat dense class="bg-primary text-white" label="Confirm" v-close-popup 
           @click='performAct' />
@@ -179,7 +178,7 @@ export default {
                 'unfit':['was marked unfit','black','white',"You haven't marked anyone as unfit"],
                 'backout':['backed out of the event','yellow','black',"Nobody has backed out so far"],
                 'adverse':['was marked adverse','green','black',"No adverse users on this event"],
-                'complete':['has completed the event','brown','white',"Even't not yet completed"]
+                'complete':['has completed the event','brown','white',"Event not yet completed"]
             }
         }
     },

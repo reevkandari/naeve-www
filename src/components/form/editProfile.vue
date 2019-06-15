@@ -122,13 +122,10 @@ export default {
         }
     },
     async uploadAvatar(){
-      //this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
-      //var profilePic = this.$refs.avatar.files[0];
       this.prompt = false;      
       var profilePic = this.$refs.cropper.getCroppedCanvas();
       this.form.avatar = profilePic.toDataURL();
       profilePic.toBlob(profileBlob=>{
-        //this.form.avatar = window.URL.createObjectURL(profilePic);
         var formData = new FormData();
         formData.append('avatar',profileBlob);
         this.$axios.post('avatar_upload',formData); 

@@ -21,7 +21,7 @@
                 contain
                 @click="openModal(index)"
             />
-            
+
         </div>
     </div>
 
@@ -88,6 +88,7 @@ export default {
         },
         async deleteMedia(){
             var res = await this.$axios.post('delete_media',{name:this.modalImg.name});
+            if(res.status != 202) return;
             this.imgModal = false;
             var newMediaList = [];
             //creating new media list, coz vue data cannot be deleted

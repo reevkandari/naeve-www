@@ -13,6 +13,7 @@
     </div>
 
     <div v-else class="notMyEvent">
+        {{myId}} {{inp}}
         You may also create events and hire people
     </div>    
 
@@ -40,7 +41,7 @@ export default {
            return this.inp; 
         },  
         myEvent(){
-            return (this.event.userId == this.myId);
+            return (this.event.user_id == this.myId);
         },
         myId(){
             return this.$store.getters['user/id'];

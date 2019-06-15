@@ -19,7 +19,7 @@
         <div class="col-xl-11 col-lg-11 col-md-11 col-12" :class="{'q-mt-md':$q.platform.is.mobile}" >
             <div class="bg-white shadow-3">
                 <eventStats v-if=recruiter :inp=eventStats @manage="manageModal = true" />
-                <applyForEvent v-else :id=event.id />
+                <applyForEvent v-else :id="event.id" />
             </div>          
         </div>
     </div>
@@ -100,7 +100,7 @@ export default{
             return this.$store.getters['user/recruiter'];
         },
         eventStats(){
-            return pick(this.event,['applications','selected','strength','pay_per_day'])
+            return pick(this.event,['user_id','applications','selected','strength','pay_per_day'])
         },        
         event(){
             return this.$store.getters["page/default"];

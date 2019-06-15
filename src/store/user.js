@@ -25,6 +25,10 @@ export default {
         },
         setProfile(state,data){
             state.profile = data;
+        },
+        unAlert(state,data=null){
+            var dedBy = data || state.profile.alerts;
+            state.profile.alerts = state.profile.alerts - dedBy;
         }
     
     },
