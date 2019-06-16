@@ -12,22 +12,24 @@
                 </div>
             </div>
             <q-list v-if="alerts.length > 0" bordered separator>
-                <q-item  class="cursor-pointer notifText" dense v-for="(item,index) in alerts" 
-                :key="index"  :class="{'seen':item.seen}"  @click.native=act(index)> 
+                <q-item class="cursor-pointer notifText" dense v-for="(item,index) in alerts" 
+                :key="index" :class="{'seen':item.seen}"  @click.native=act(index)> 
                     <q-item-section class="col-12" >
+
                         <div>
-                            You have been 
-                            <q-chip square dense :color=action[item.action][1] 
-                            :text-color=action[item.action][2]>
+                            {{ item.name || 'You have been'}}
+                            <q-chip square dense :color=action[item.action][2] 
+                            :text-color=action[item.action][3]>
                                 {{action[item.action][0]}}
-                            </q-chip> 
+                            </q-chip>
+                            {{action[item.action][1]}}
                             <span class="hero"> "{{item.title}}" </span>
 
                         </div>
                         <span class="age text-right">{{item.born | timeRelative}}</span>                                                
                     </q-item-section>  
-            
                 </q-item>
+
             </q-list>
             <div v-else class="notifText q-pa-md">
                 No new Alerts here
@@ -36,6 +38,11 @@
     </div>
 </div>
 </q-page>
+<!--SPINNER LOADING-->
+<q-inner-loading :showing="loading">
+    <q-spinner-gears size="80px" color="indigo" />
+</q-inner-loading>        
+<!--SPINNER LOADING-->
 </q-no-ssr>
 </template>
 
@@ -44,13 +51,14 @@
 export default {
     data(){
         return{
+            loading:false,
             alerts:[],
             action:{
-                'select':['selected for','primary','white'],
-                'fire':['fired from','orange','black'] ,
-                'unfit':['marked unfit','green','white'],
-                'adverse':['reported as adverse','black','white'],
-                'backout':['reported as adverse','brown','white'],
+                'select':['selected','for','primary','white'],
+                'fire':['fired','from','orange','black'] ,
+                'unfit':['marked unfit','for','green','white'],
+                'adverse':['reported adverse','for','black','white'],
+                'backout':['backed out','from','brown','white'],
             }
         }
     },    
@@ -61,16 +69,19 @@ export default {
     },
     methods:{
         async fetchAlerts(){
+            this.loading = true;
             var res = await this.$axios.get('alerts');
-            this.alerts = res.data; 
+            this.alerts = res.data;
+            this.loading = false;             
         },
-        act(index){
+        async act(index){
             var alert = this.alerts[index];
             //marking as seen
-            if(!alert.seen) this.markAsRead(index);
-            //if()
+            if(!alert.seen) await this.markAsRead(index);
+            this.$router.push({name:'event',params:{id:alert.event_id}})
         },
-        markAsRead(index=-1){
+        async markAsRead(index=-1){
+            if(this.alerts.length == 0 ) return;
             var toBeMarked = [];
             if(index >= 0){
                 this.alerts[index].seen = true;
@@ -85,11 +96,11 @@ export default {
                 }
             }
             this.$store.commit('user/unAlert',toBeMarked.length);
-            this.$axios.post('mark_alert_seen',{alertList:toBeMarked});
+            await this.$axios.post('mark_alert_seen',{alertList:toBeMarked});
         }
     },
-    created(){
-        this.fetchAlerts();
+    async created(){
+        await this.fetchAlerts();
     }
 }
 </script>

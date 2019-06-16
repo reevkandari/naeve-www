@@ -98,7 +98,7 @@
 
         <!--SPINNER LOADING-->
         <q-inner-loading :showing="loading">
-            <q-spinner-gears size="40px" color="primary" />
+            <q-spinner-gears size="80px" color="indigo" />
         </q-inner-loading>        
         <!--SPINNER LOADING-->
     </q-list>
@@ -139,8 +139,12 @@
 </template>
 
 <script>
+import messageUs from 'components/form/messageUs'
 
 export default {
+    component:{
+        messageUs
+    },
     props:['inp'],
     data(){
         return{

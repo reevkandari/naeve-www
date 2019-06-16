@@ -10,7 +10,7 @@
 
     <div class="col-xl-6 col-lg-6 col-md-6 col-12" >
         <div class="col-11" :class="{'q-ml-md':$q.platform.is.desktop}">
-            <eventListCard :inp="eventListCard" class="bg-white shadow-3" />
+            <eventCard :inp="eventCard" class="bg-white shadow-3" />
             <eventDetails :inp="event" class="q-pa-md bg-white shadow-3 q-mt-md" />
         </div>
     </div>
@@ -40,13 +40,19 @@
 <script>
 import profileCard from 'components/display/profileCard';
 import eventDetails from 'components/display/eventDetails';
-import eventListCard from  'components/display/eventListCard';
+import eventCard from  'components/display/eventCard';
 import trendingEvents from  'components/display/trendingEvents';
 import applyForEvent from  'components/display/applyForEvent';
 import eventStats from 'components/display/eventStats';
 import manage from 'components/display/manage';
-
 import {pick, merge} from  'lodash';
+import {
+  Loading,
+
+  // optional!, for example below
+  // with custom spinner
+  QSpinnerGears
+} from 'quasar'
 
 export default{
     preFetch ({ store, currentRoute }) {
@@ -72,7 +78,7 @@ export default{
     components:{
         eventDetails,
         profileCard,
-        eventListCard,
+        eventCard,
         trendingEvents,
         applyForEvent,
         eventStats,
@@ -111,7 +117,7 @@ export default{
         recruiterDetails() {
             return pick(this.event,['name','bio','avatar','user_id', 'recruiter']);
         },
-        eventListCard() {
+        eventCard() {
             return pick(this.event,['id','status','title', 'venue', 'strength', 'pay_per_day', 'days', 'begin','gender'])
         }
 

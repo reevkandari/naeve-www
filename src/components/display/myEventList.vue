@@ -1,61 +1,10 @@
 <template>
-<div>
-
-<div class="q-pa-sm">
-<!--Task name and VENUE-->
-<div class="row">
-    <div class="col-10">
-        <router-link class="noDeco" :to="{name:'event',params:{id:inp.id}}" >
+<q-item >
+<q-item-section>
             <div class="eventTitle"> {{inp.title}}</div>
-        </router-link>
-    </div>
-    <div class="col-2 text-right">
-        <q-chip dense :color="color[inp.status]" class="text-capitalize" text-color="white">
-            {{inp.status}}
-        </q-chip>
-    </div>
-</div>
 
-<div class="row q-pb-xs">
-    <span class="venuKey q-pr-xs"> Venue : </span>
-    <span class="venuVal">{{inp.venue}}</span>
-</div>
-
-
-<!--Task name and Photo-->
-
-<!--Core Data Points-->
-
-<div class="row justify-between q-pt-sm">
-    <div v-for="(item,index2) in dataPoints" :key="index2" class="col-auto">
-        <div class="full-width itemKey text-center">
-            {{item.label}}
-        </div>
-        <div class="full-width itemVal text-capitalize text-center">
-            {{eventsHuman[item.key]}}
-        </div>
-    </div>
-</div>
-
-<!--Core Data Points-->
-      
-</div>
-
-<!--Footer-->
-<div v-if="$route.name!='event'" class="full-width row justify-around bg-yellow-5 shadow-6 q-pa-xs text-black">
-    <div class="col-6">
-        Posted on {{inp.born | dateHuman}}
-    </div>
-    
-    <div class="col-5 text-right">
-        <router-link class="noDeco mota" :to="{name:'event',params:{id:inp.id}}" >
-            More Details  >>
-        </router-link>
-    </div>            
-</div>
-<!--Footer-->
-
-</div>
+</q-item-section>
+</q-item>
 </template>
 
 

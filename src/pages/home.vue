@@ -30,7 +30,7 @@
               <createEvent class="bg-white shadow-3" @close="createEvent=false" />
             </div>
             <div v-else>
-              <eventsPaginate class="q-mx-sm"  />        
+              <paginateEvents :inp=paginateInp class="q-mx-sm"  />        
             </div>             
             </div>          
           </div>
@@ -54,7 +54,7 @@
 
 <script>
 import homeProfileCard from 'components/display/homeProfileCard';
-import eventsPaginate from 'components/display/eventsPaginate';
+import paginateEvents from 'components/display/paginateEvents';
 import createEvent from 'components/form/createEvent';
 import trendingEvents from 'components/display/trendingEvents';
 
@@ -62,7 +62,7 @@ import trendingEvents from 'components/display/trendingEvents';
 export default {
   components:{
     homeProfileCard,
-    eventsPaginate,
+    paginateEvents,
     createEvent,
     trendingEvents
   },
@@ -72,8 +72,11 @@ export default {
     }
   },
   computed: {
+    paginateInp(){
+      var path = (this.recruiter) ? 'created_events' : 'new_events';
+      return {path:path, limit:5};
+    },
     recruiter() {
-      
       return this.$store.getters["user/recruiter"];
     },
   }

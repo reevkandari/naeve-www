@@ -19,7 +19,7 @@
     <q-avatar class="col" size="100px">
     <img :src="form.avatar | ourMedia" @click="$refs.avatar.click()" >
       <input v-if="edit" @change="openImageCropper" ref="avatar"
-      accept="image/x-png,image/gif,image/jpeg"  type="file" style="display:none"/>
+      accept="image/x-png,image/jpeg"  type="file" style="display:none"/>
   </q-avatar>
    <div class="col-8 q-ml-md ">
        <q-input class="full-width" v-model=form.name dense 
@@ -112,7 +112,6 @@ export default {
   methods:{   
     async updateProfile(){
         var newForm = pick(this.form,['bio','skills','avatar']);
-        //newForm.skills = this.skills.toString()
         var res = await this.$axios.post('update_profile',newForm);
         if(res.status=!202) this.error = error;
         else{
@@ -123,7 +122,7 @@ export default {
     },
     async uploadAvatar(){
       this.prompt = false;      
-      var profilePic = this.$refs.cropper.getCroppedCanvas();
+      var profilePic = this.$refs.cropper.getCroppedCanvas({width:480});
       this.form.avatar = profilePic.toDataURL();
       profilePic.toBlob(profileBlob=>{
         var formData = new FormData();

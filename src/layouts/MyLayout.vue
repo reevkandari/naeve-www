@@ -119,9 +119,7 @@ export default {
 .siteName{
   font-family: 'Poppins'
 }
-.bg{
-  background-color:aliceblue;
-}
+
 .page{
   min-height: 100vh;
 }
