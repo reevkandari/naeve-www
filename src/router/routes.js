@@ -19,6 +19,16 @@ const routes = [
         ]
       },
 
+      { path: 'help',component: () => import('pages/help/index'), meta:'ay',
+        children:[
+          { path: '', name:'accountProfile',component: () => import('pages/help/accountProfile'), meta:'ay' },
+          { path: 'account-profile', name:'account-profile',component: () => import('pages/help/accountProfile'), meta:'ay' },
+          { path: 'technicalIssues', name:'technicalIssues',component: () => import('pages/help/technicalIssues'), meta:'ay' },
+          { path: 'eventIssues', name:'eventIssues',component: () => import('pages/help/eventIssues'), meta:'ay' },
+          { path: 'needMoreHelp', name:'needMoreHelp',component: () => import('pages/help/needMoreHelp'), meta:'ay' },
+        ]
+      },
+
       { path: 'login', name:'login',component: () => import('pages/login.vue'), meta:'an' },
       { path: 'signup', name:'signup',component: () => import('pages/signup.vue'), meta:'an' },
       { path: 'forgot', name:'forgot',component: () => import('pages/forgot.vue'), meta:'an' },

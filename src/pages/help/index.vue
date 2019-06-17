@@ -6,10 +6,10 @@
             <q-tabs inline-label :vertical="$q.platform.is.desktop" 
                 :class="{'bg-primary text-white shadow-3':$q.platform.is.mobile}">
 
-                    <q-route-tab class="name"  dense v-for="(item,index) in navigation" :key="index" 
+                    <q-route-tab  dense v-for="(item,index) in navigation" :key="index" 
                     :name=item.name  :to={name:item.to}  :label=item.name :icon=item.icon 
                     :class="{'q-router-link--exact-active q-router-link--active q-tab--active':
-                    ($route.name=='me' && item.to=='account')}" >
+                    ($route.name=='help' && item.to=='accountProfile')}" >
 
                     </q-route-tab>
 
@@ -40,10 +40,10 @@ export default {
     data(){
         return{
             navigation:[
-                {name:"Account",to:"account",icon:"settings"},                
-                {name:"Profile",to:"profile",icon:"person"},                
-                {name:"Events",to:"events",icon:"calendar_today"},
-                {name:"Wallet ",to:"wallet",icon:"account_balance_wallet"},
+                {name:"Account",to:"accountProfile",icon:"settings"},                
+                {name:"Technical Issues",to:"technicalIssues",icon:"person"},                
+                {name:"Event Issues",to:"eventIssues",icon:"calendar_today"},
+                {name:"Need Help ?",to:"needMoreHelp",icon:"account_balance_wallet"},
             ],
         }
     },

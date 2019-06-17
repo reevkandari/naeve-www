@@ -66,7 +66,8 @@ module.exports = function (ctx) {
         'QBadge',
         'QInnerLoading',
         'QSpinnerGears',
-        'QTab'
+        'QTab',
+        'QExpansionItem'
       ],
 
       directives: [
