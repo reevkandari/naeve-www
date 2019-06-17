@@ -43,10 +43,10 @@ export default{
         return store.dispatch('page/fetch',inp);
     },
     meta(){
-        if(this.profile){
+        if (!this.profile) return {};        
         return{
             meta:{
-                og_name:{
+                og_title:{
                     property:'og:title',
                     content:this.$options.filters.formatName(this.profile.name)
                 },
@@ -56,14 +56,13 @@ export default{
                 },
                 og_image_width:{
                     property:'og:image:width',
-                    content:200
+                    content:250
                 },                
                 og_description:{
                     property:'og:description',
                     content:this.profile.bio
                 },                           
             }
-        }
         }
     },
     components:{

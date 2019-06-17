@@ -69,7 +69,7 @@ export default {
   },
   methods:{
     async fetchAccountDetails(){
-      var res = await this.$axios.get('my_account_details');
+      var res = await this.$axios.get('account_details');
       this.account = res.data;
     },
 

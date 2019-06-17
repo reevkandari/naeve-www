@@ -50,11 +50,7 @@ export default {
       og_title:{
           property:'og:title',
           content:'Get paid working for Events'
-      },
-      og_url:{
-        property:'og:url',
-        content:process.env.APP_URL
-      },          
+      },  
       og_description:{
           property:'og:description',
           content:'Participate as volunteer in events and make some quick cash'

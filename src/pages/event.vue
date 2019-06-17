@@ -60,6 +60,7 @@ export default{
         return store.dispatch('page/fetch',inp);
     },
     meta(){
+        if(!this.event) return {};        
         return{
             meta:{
                 og_title:{

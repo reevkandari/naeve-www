@@ -35,7 +35,7 @@ export default {
   },
   methods:{
     async fetchProfile(){
-      var res = await this.$axios.get('my_profile');
+      var res = await this.$axios.get('profile');
       this.profile = res.data;
     }
   },

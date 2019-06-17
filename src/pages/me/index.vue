@@ -10,7 +10,6 @@
                     :name=item.name  :to={name:item.to}  :label=item.name :icon=item.icon 
                     :class="{'q-router-link--exact-active q-router-link--active q-tab--active':
                     ($route.name=='me' && item.to=='account')}" >
-
                     </q-route-tab>
 
             </q-tabs> 
@@ -56,15 +55,6 @@ export default {
 </script>
 
 <style>
-
-
-.name{
-    display:inline;
-    font-size:1.6em;
-    text-align:center;
-    margin:0;
-}
-
 
 
  

@@ -5,8 +5,6 @@ const routes = [
     component: () => import('layouts/MyLayout.vue'),
     children: [
       { path: '', name:'front',component: () => import('pages/front'), meta:'an' },
-      ///{ path: 'login-first', name:'loginFirst',component: () => import('pages/loginFirst'), meta:'an' },
-
       { path: 'home', name:'home',component: () => import('pages/home'), meta:'ay' },
       { path: 'alerts', name:'alerts',component: () => import('pages/alerts'), meta:'ay' },
       { path: 'me',component: () => import('pages/me/index'), meta:'ay',
@@ -18,17 +16,7 @@ const routes = [
           { path: 'wallet', name:'wallet',component: () => import('pages/me/wallet'), meta:'ay' },
         ]
       },
-
-      { path: 'help',component: () => import('pages/help/index'), meta:'ay',
-        children:[
-          { path: '', name:'accountProfile',component: () => import('pages/help/accountProfile'), meta:'ay' },
-          { path: 'account-profile', name:'account-profile',component: () => import('pages/help/accountProfile'), meta:'ay' },
-          { path: 'technicalIssues', name:'technicalIssues',component: () => import('pages/help/technicalIssues'), meta:'ay' },
-          { path: 'eventIssues', name:'eventIssues',component: () => import('pages/help/eventIssues'), meta:'ay' },
-          { path: 'needMoreHelp', name:'needMoreHelp',component: () => import('pages/help/needMoreHelp'), meta:'ay' },
-        ]
-      },
-
+      { path: 'help', name:'help', component: () => import('pages/help.vue'), meta:'adm'},
       { path: 'login', name:'login',component: () => import('pages/login.vue'), meta:'an' },
       { path: 'signup', name:'signup',component: () => import('pages/signup.vue'), meta:'an' },
       { path: 'forgot', name:'forgot',component: () => import('pages/forgot.vue'), meta:'an' },
