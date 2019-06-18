@@ -1,27 +1,22 @@
 <template>
-<div class="row  items-center">
-    <div class="col-4">
-        <q-avatar size="80px">
-        <img :src="profile.avatar | ourMedia" /> 
+<div class="row items-center">
+    <div class="col-5 row">
+        <q-avatar class="q-pr-xs" size="80px">
+            <img :src="profile.avatar | ourMedia" /> 
         </q-avatar>          
     </div>
 
-    <div class="col-7 q-pl-sm">
-        <div class="full-width name">{{profile.name}}</div>
+    <div class="col-7">
+        <div class="full-width name text-left">{{profile.name}}</div>
         <div class="text-left">
-            
-      <q-chip>
-        <q-avatar color="blue" text-color="white">{{profile.active}}</q-avatar>
-        Active Events
-      </q-chip>
-      <q-chip>
-        <q-avatar  color="light-green" text-color="white">
-            <span  class="walletText">
-                {{wallet}}
-            </span>
-            </q-avatar>
-        Rupees in Wallet
-      </q-chip>           
+            <q-chip square >
+                <q-avatar  color="light-green" text-color="white">
+                    <span  class="walletText">
+                        {{wallet}}
+                    </span>
+                    </q-avatar>
+                ₹ in Wallet
+            </q-chip>           
         </div>
     </div>        
 
@@ -35,7 +30,7 @@
 export default {
     computed:{
         wallet(){
-            var val = this.profile.wallet;
+            var val = 1200;
             return (val > 999) ? (val/1000).toFixed(1)+'k' : val;
         },
         profile(){
@@ -47,9 +42,12 @@ export default {
 
 <style scoped>
 .name{
-    font-size:1.1em;
+    font-size:1.2em;
+    font-family: 'Raleway';
+    font-weight: 600;
 }
 .walletText{
+    font-weight: bold;
     font-size: 0.9em;
 }
 </style>

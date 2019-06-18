@@ -28,7 +28,11 @@ function timeRelative(val){
 }
 
 function dateHuman(val){
-    return date.formatDate(val, 'Do MMMM');
+    var then = new Date(convertLocalTime(val)) ;
+    var now = new Date(Date.now()); 
+    var diffYrs = date.getDateDiff( now, then,'years');
+    var yrFrmt = (diffYrs > 0) ? ', YYYY' : '';
+    return date.formatDate(val, 'Do MMMM' + yrFrmt);
 }
 
 function dateHumanFull(val){

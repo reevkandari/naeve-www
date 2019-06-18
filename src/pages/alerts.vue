@@ -17,7 +17,7 @@
                     <q-item-section class="col-12" >
 
                         <div>
-                            {{ item.name || 'You have been'}}
+                            {{ (recruiter) ? item.name : 'You have been'}}
                             <q-chip square dense :color=action[item.action][2] 
                             :text-color=action[item.action][3]>
                                 {{action[item.action][0]}}

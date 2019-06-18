@@ -152,7 +152,7 @@ export default {
             chip:{
                 strength:{color:'orange-8',label:'required'},
                 selected:{color:'brown',label:'selected'},
-                applications:{color:'primary',label:'applied'}
+                applied:{color:'primary',label:'applied'}
             },            
             user:{},
             confirmBox:false,

@@ -28,7 +28,7 @@ export default {
         return{
             chip:{
                 strength:{color:'orange-8',label:'required'},
-                applications:{color:'primary',label:'applied'},
+                applied:{color:'primary',label:'applied'},
                 selected:{color:'brown',label:'selected'}
             }
         }

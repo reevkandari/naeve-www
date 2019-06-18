@@ -3,7 +3,7 @@
     
     <q-input class="full-width" placeholder="What's the matter ?" 
     dense outlined v-model=msg autogrow maxlength="180" />
-    <div class="col-9 q-pa-xs">
+    <div class="col-9 q-pa-xs text-left">
         <q-chip v-for="(item,index) in chips" :key="index" 
         :color=item[1] square :text-color=item[2] dense>{{item[0]}}</q-chip>
     </div>
@@ -18,9 +18,8 @@ export default {
             msg:'',
             chips:[
                 ['Ask','red','white'],
-                ['Suggest','yellow','black'],
                 ['Complain','brown','white'],
-                ['Help','blue','white']
+                ['Help','orange-6','black']
             ]
     }
     },

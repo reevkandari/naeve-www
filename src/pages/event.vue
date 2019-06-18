@@ -107,7 +107,7 @@ export default{
             return this.$store.getters['user/recruiter'];
         },
         eventStats(){
-            return pick(this.event,['user_id','applications','selected','strength','pay_per_day'])
+            return pick(this.event,['user_id','applied','selected','strength','pay_per_day'])
         },        
         event(){
             return this.$store.getters["page/default"];
