@@ -47,18 +47,27 @@ export default {
   name: "MyLayout",
   meta(){
     return{
+      og_url:{
+        property:'og:url',
+        content: (process.env.site_url) + this.$router.path
+      },
       og_title:{
           property:'og:title',
           content:'Get paid working for Events'
       },  
       og_description:{
           property:'og:description',
-          content:'Participate as volunteer in events and make some quick cash'
+          content:'Volunteer for events and make some quick cash'
       },
       og_image:{
         property:'og:image',
         content:process.env.site_url + 'statics/logo.png'
-      },                     
+      },
+      og_image_width:{
+          property:'og:image:width',
+          content:280
+      },        
+
     }
   },
   data() {

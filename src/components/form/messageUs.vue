@@ -28,10 +28,9 @@ export default {
     methods:{
         async submit(){
             if(this.msg.length < 10) return;
-            var msgToSend = this.$route.path+' | ' + this.msg;
             var res = await this.$axios.post('support_message',{
                 path:this.$route.path,
-                message:msgToSend
+                message:this.msg
             });
             if(res.status!=202) return;
             this.$q.notify('Your Message has been sent. We will look into it ASAP.');

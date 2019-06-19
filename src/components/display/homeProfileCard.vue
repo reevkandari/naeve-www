@@ -13,7 +13,7 @@
                 <span class="statVal">{{wallet}}  </span>₹ in Wallet  
             </q-chip>
             <q-chip dense  square color="orange-8" text-color="white">
-                <span class="statVal">{{stats.complete}}</span>  complete events 
+                <span class="statVal">{{stats.complete}}</span> &nbsp; complete events 
             </q-chip>            
         </div>
 
@@ -63,7 +63,6 @@ export default {
     font-weight: 600;
 }
 .statVal{
-    letter-spacing: 2px;
     font-size: 1.2em;
 }
 </style>

@@ -69,7 +69,7 @@ export default{
                 },                    
                 og_description:{
                     property:'og:description',
-                    content:this.event.pay_per_day+' ₹ per day | On '+ 
+                    content:this.event.pay_per_day+'₹ per day | On '+ 
                     this.$options.filters.dateHuman(this.event.begin) +
                     ' | ' + this.event.days +' Days'
                 },                                

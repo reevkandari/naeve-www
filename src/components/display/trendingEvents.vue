@@ -1,13 +1,14 @@
 <template>
-<div>
-    <div class="row">
-        <router-link v-for="(item,index) in events" :key="index" 
-        class="full-width q-pa-xs noDeco itemName" :to="{name:'event',params:{id:item.id}}">
-            {{item.label}}
-        </router-link>
+<div class="">
+    <div class="q-pa-sm row">
+        <span >Feel free to contact us.</span>
+        <br/> <br/>
+        79770 39793
+        <br/>
+        84509 38298
     </div>
     <div class="row bg-indigo shadow-3 q-pa-xs  text-center">
-        <span class="col title">Trending 🔥🔥</span>
+        <span class="col title">Support</span>
     </div>
 </div>
 </template>
@@ -16,11 +17,7 @@
 export default {
     data(){
         return{
-            events:[
-                {label:'Dancing For Uber',id:1},
-                {label:'Eating For Zomato',id:2},
-                {label:'Sleeping for HR',id:3}
-            ]
+            events:[]
         }
     }
 }
@@ -28,7 +25,7 @@ export default {
 
 <style>
 .title{
-    font-size: 1.4em;
+    font-size: 1.1em;
     font-weight: 450;
     color:aliceblue;
 }

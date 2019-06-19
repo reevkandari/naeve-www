@@ -56,13 +56,15 @@
                 :src="imgSrc"
                 :aspect-ratio="1"
                 alt="Source Image"
-                :img-style="{ 'width': '300px', 'height': '400px' }">
-            </vue-cropper>
+                />
+
             </q-card-section>
 
             <q-card-actions align="right" class="text-primary">
               <q-btn flat label="Crop" @click="uploadAvatar"  />
-              <q-btn flat label="Rotate" @click="rotate" />
+              <!--
+              <q-btn flat label="Rotate" @click="$refs.cropper.rotate(90)" />
+              -->
               <q-btn flat label="Cancel" v-close-popup />
             </q-card-actions>
           </q-card>
@@ -148,10 +150,7 @@ export default {
         } else {
           alert('Sorry, FileReader API not supported');
         }
-    },
-    rotate() {
-        this.$refs.cropper.rotate(90);
-      }
+    }
   }
 }
 </script>

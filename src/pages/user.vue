@@ -54,15 +54,12 @@ export default{
                 og_image:{
                     property:'og:image',
                     content:this.$options.filters.ourMedia(this.profile.avatar)
-                },
-                og_image_width:{
-                    property:'og:image:width',
-                    content:250
-                },                
+                },            
                 og_description:{
                     property:'og:description',
                     content:this.profile.bio
-                },                           
+                }
+                                                 
             }
         }
     },
