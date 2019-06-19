@@ -48,9 +48,9 @@ export default {
   meta(){
     return{
       meta:{
-        og_url:{
+        og_site_url:{
           property:'og:url',
-          content: (process.env.site_url) + this.$router.path
+          content: process.env.site_url
         },
         og_title:{
             property:'og:title',
