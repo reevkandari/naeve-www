@@ -7,9 +7,9 @@
   "author": "Rishabh Kandari <reevkandari@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "QENV=development quasar dev -m ssr",
-    "build-test": "QENV=testing quasar build -m ssr",
-    "build-production": "QENV=production quasar build -m ssr",
+    "dev": "QENV=dev quasar dev -m ssr",
+    "test": "QENV=dev quasar build -m ssr",
+    "build": "QENV=prod quasar build -m ssr",
     "deploy": "npm install --prefix ./dist/ssr/"
   },
   "dependencies": {
