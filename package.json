@@ -8,9 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "QENV=dev quasar dev -m ssr",
-    "test": "QENV=dev quasar build -m ssr",
-    "build": "QENV=prod quasar build -m ssr",
-    "deploy": "npm install --prefix ./dist/ssr/"
+    "build": "QENV=dev+prod quasar build -m ssr && npm install --prefix ./dist/ssr/"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
