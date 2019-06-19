@@ -15,16 +15,18 @@
             {{event[key]}} {{val.label}} 
             </q-chip>
         </div>
+
         <div class="desktop-only recGyan full-width q-pa-sm bg-white shadow-3 q-mt-sm">
             <div v-if="full">
                 Positions are full for this event.
             </div>
-            <div>
+            <div v-else>
                 Firing people will attract a penalty. 
                 <br>
                 Carefully review users before selecting them.
-            </div>            
+            </div>        
         </div>
+        <messageUs class="q-pa-xs q-pt-sm bg-white shadow-3 q-mt-sm"/>
     </div>
 </div>
 
@@ -46,8 +48,7 @@
 
             <!--Name Status-->
             <q-item-section class="col-auto">
-                <router-link :to="{name:'user',params:{id:item.user_id}}" class="noDeco" 
-                target="_blank">
+                <router-link :to="{name:'user',params:{id:item.user_id}}" class="noDeco" >
                     <span class="name">{{item.name}}</span>
                 </router-link>
                 <span class="statusText">{{statusInfo[item.status][0]}}</span>
@@ -142,7 +143,7 @@
 import messageUs from 'components/form/messageUs'
 
 export default {
-    component:{
+    components:{
         messageUs
     },
     props:['inp'],

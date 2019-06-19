@@ -1,6 +1,6 @@
 <template>
 <div class="row items-center">
-    <div class="col-5 row">
+    <div class="col-4 row">
         <q-avatar class="q-pr-xs" size="80px">
             <img :src="profile.avatar | ourMedia" /> 
         </q-avatar>          
@@ -9,15 +9,14 @@
     <div class="col-7">
         <div class="full-width name text-left">{{profile.name}}</div>
         <div class="text-left">
-            <q-chip square >
-                <q-avatar  color="light-green" text-color="white">
-                    <span  class="walletText">
-                        {{wallet}}
-                    </span>
-                    </q-avatar>
-                ₹ in Wallet
-            </q-chip>           
+            <q-chip dense square color="indigo" text-color="white">
+                <span class="statVal">{{wallet}}  </span>₹ in Wallet  
+            </q-chip>
+            <q-chip dense  square color="orange-8" text-color="white">
+                <span class="statVal">{{stats.complete}}</span>  complete events 
+            </q-chip>            
         </div>
+
     </div>        
 
 <br>
@@ -28,14 +27,31 @@
 
 <script>
 export default {
+    data(){
+        return{
+            stats:{}
+        }
+    },
     computed:{
         wallet(){
-            var val = 1200;
-            return (val > 999) ? (val/1000).toFixed(1)+'k' : val;
+            var amnt = this.stats.wallet;
+            if(!amnt) return 0;
+            return (amnt > 999) ? (amnt/1000).toFixed(1)+'k' : amnt;
         },
         profile(){
             return this.$store.getters['user/profile'];
         }
+    },
+    methods:{
+        async fetchStats(){
+            var res = await this.$axios.get('stats');
+            this.stats = res.data;
+        }
+    },
+    created(){
+        console.log('dam');
+        this.fetchStats();
+        console.log('dam');        
     }
 }
 </script>
@@ -46,8 +62,8 @@ export default {
     font-family: 'Raleway';
     font-weight: 600;
 }
-.walletText{
-    font-weight: bold;
-    font-size: 0.9em;
+.statVal{
+    letter-spacing: 2px;
+    font-size: 1.2em;
 }
 </style>

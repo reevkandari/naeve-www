@@ -4,7 +4,7 @@
       <q-toolbar class="row bg-grey-9" :class="{'justify-center':$q.platform.is.desktop}">
         <div class="col-lg-10 col-md-10 col-xl-10 col-12 row items-center">
           <q-toolbar-title class="col-3 siteName">
-            <router-link class="noDeco text-white" to="/">
+            <router-link class="noDeco siteName" to="/">
             naeve
             </router-link>
           </q-toolbar-title>
@@ -113,7 +113,9 @@ export default {
   max-height:40px;
 }
 .siteName{
-  font-family: 'Poppins'
+  font-family: 'Poppins';
+  letter-spacing: 1px;
+  color:white;
 }
 
 .page{

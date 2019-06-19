@@ -3,8 +3,8 @@
 <!-- Upper Toolbar -->
 <div class="row items-center q-pa-xs bg-white shadow-3">    
     <div class="col-9 row">
-        <div class="col-2 text-subtitle2">Page {{page}}</div>
-        <div class="col-10 text-subtitle2 text-center">
+        <div class="col-3 text-subtitle2">Page {{page}}</div>
+        <div class="col-9 text-subtitle2 text-center">
         {{(recruiter || $route.name=='events') ? 'My Events' : 'New Events'}}
         </div>
     </div>
@@ -32,8 +32,8 @@
 <!--NEXT PAGE -->
 <div class="row items-center q-pa-xs q-mt-md bg-white shadow-3">   
     <div class="col-9 row">
-        <div class="col-2 text-subtitle2">Page {{page}}</div>
-        <div class="col-10 text-subtitle2 text-center">
+        <div class="col-3 text-subtitle2">Page {{page}}</div>
+        <div class="col-9 text-subtitle2 text-center">
         {{(recruiter || $route.name=='events') ? 'My Events' : 'New Events'}}
         </div>
     </div>

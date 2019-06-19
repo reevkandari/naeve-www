@@ -7,7 +7,7 @@
 
     <div class="col-xl-3 col-lg-3 col-md-3 col-12 text-center">
       <div class="sticky">
-        <div class="bg-white shadow-3 q-pa-sm y">
+        <div class="bg-white shadow-3 q-pa-sm">
           <homeProfileCard />
         </div>
 
@@ -30,7 +30,7 @@
               <createEvent class="bg-white shadow-3" @close="createEvent=false" />
             </div>
             <div v-else>
-              <paginateEvents :inp=paginateInp class="q-mx-sm"  />        
+              <paginateEvents :inp=paginateInp class="q-mx-sm q-mb-md"  />        
             </div>             
             </div>          
           </div>
@@ -74,7 +74,7 @@ export default {
   computed: {
     paginateInp(){
       var path = (this.recruiter) ? 'created_events' : 'new_events';
-      return {path:path, limit:5};
+      return {path:path, limit:6};
     },
     recruiter() {
       return this.$store.getters["user/recruiter"];

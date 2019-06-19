@@ -7,19 +7,21 @@
         <q-chip v-for="(item,index) in chips" :key="index" 
         :color=item[1] square :text-color=item[2] dense>{{item[0]}}</q-chip>
     </div>
-    <q-btn class="col-3 q-my-xs" label="Send" color="primary" @click="submit" />
+    <q-btn class="col-3 q-my-sm" label="Send" dense color="primary" @click="submit" />
 </div>
 </template>
 
 <script>
+
 export default {
     data(){
         return{
             msg:'',
             chips:[
                 ['Ask','red','white'],
-                ['Complain','brown','white'],
-                ['Help','orange-6','black']
+                ['Suggest','yellow','black'],
+                ['Help','indigo','white'],
+                ['Complain','brown','white']
             ]
     }
     },

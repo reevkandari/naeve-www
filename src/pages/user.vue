@@ -1,16 +1,17 @@
 <template>
 <q-page>
-<q-no-ssr>
+<q-no-ssr class="">
 <div v-if="profile" class="row justify-center" 
-:class="{'q-mx-md':$q.platform.is.mobile}">    
+:class="{'q-mx-sm q-mt-sm':$q.platform.is.mobile}">    
     <div class="col-xl-3 col-lg-3 col-md-3 col-12">
         <profileCard :inp="profile" class="bg-white shadow-3"
-        :class="{'q-mb-md': $q.platform.is.mobile}"  />
+        :class="{'q-mb-sm': $q.platform.is.mobile}"  />
     </div>
     <div class="col-xl-6 col-lg-6 col-md-6 col-12" >
         <div class="col-11" :class="{'q-ml-md':$q.platform.is.desktop}">
             <!--This component is only for non recruiters-->
-            <profileDetails v-if="!profile.recruiter" :inp="profile" class="q-mb-md bg-white shadow-3" />
+            <profileDetails v-if="!profile.recruiter" :inp="profile" 
+            class="q-mb-sm bg-white shadow-3" />
             <mediaView  :id=profile.user_id class="q-pa-xs bg-white shadow-3" />
         </div>
     </div>
