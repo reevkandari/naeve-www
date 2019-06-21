@@ -1,8 +1,8 @@
 <template>
 <div class="">
     <div class="q-pa-sm row">
-        <span >Feel free to contact us.</span>
-        <br/> <br/>
+        <div class="full-width text-subtitle2">Feel free to contact us.</div>
+        
         79770 39793
         <br/>
         84509 38298

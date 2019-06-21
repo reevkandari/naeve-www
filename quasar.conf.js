@@ -108,11 +108,11 @@ module.exports = function (ctx) {
 
     devServer: {
       // https: true,
-      port: 5000,
+      port: parseInt(process.env.PORT),
       open: false,
       proxy: {
         '/api': {
-          target: "https://beta.naeve.co/api/",
+          target: "https://dev.naeve.co/api/",
           changeOrigin: true,
           pathRewrite: {
             '^/api': ''
@@ -128,7 +128,7 @@ module.exports = function (ctx) {
       pwa: false,
       componentCache: {
         max: 0,
-        maxAge: 2000//900000
+        maxAge: 80000//900000
       },      
     },
 

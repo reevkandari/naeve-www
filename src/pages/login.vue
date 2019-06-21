@@ -1,9 +1,9 @@
 <template>
 <q-page>
 <q-no-ssr>    
-    <div class="row justify-center q-mt-lg">
+    <div class="row justify-center q-mt-xl">
         <div class="col-xl-6 col-lg-6 col-md-6 col-12 bg-white shadow-3 q-pa-sm">
-            <div class="text-center text-subtitle1 q-py-sm">Log-In to Eva</div>
+        <div class="text-center text-h6 q-py-sm">Sign-Up</div>
             <loginForm  @success=loginSuccess />
             <div class="row q-pt-sm q-px-sm text-subtitle1">
                 <div class="col-6" >

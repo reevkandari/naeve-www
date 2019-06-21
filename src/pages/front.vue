@@ -2,14 +2,9 @@
 <q-page class="caraousel">
    <div class="row q-pb-md">
        <div class="col-12 ">
-            <q-carousel 
-            animated
-            v-model="slide"
-            navigation
-            infinite
-            autoplay="3500"
+            <q-carousel  animated v-model="slide" navigation infinite
+            :autoplay=2300>
             
-            >
             <q-carousel-slide :name="1" img-src="../statics/banner1.png" />
             <q-carousel-slide :name="2" img-src="../statics/banner2.jpeg" />
             <q-carousel-slide :name="3" img-src="../statics/banner3.png" />
