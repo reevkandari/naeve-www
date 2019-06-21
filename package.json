@@ -8,8 +8,8 @@
   "private": true,
   "scripts": {
     "dev": "PORT=5000 QENV=dev quasar dev -m ssr",
-    "build-test": "PORT=5000 QENV=dev+prod quasar build -m ssr && npm install --prefix ./dist/ssr/",
-    "build": "PORT=6000 QENV=dev+prod quasar build -m ssr && npm install --prefix ./dist/ssr/"
+    "build-test": "QENV=dev+prod quasar build -m ssr && npm install --prefix ./dist/ssr/",
+    "build": "QENV=dev+prod quasar build -m ssr && npm install --prefix ./dist/ssr/"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
