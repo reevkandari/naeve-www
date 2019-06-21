@@ -19,3 +19,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 
+#pm2 config file
+ecosystem.config.js
