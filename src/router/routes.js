@@ -17,6 +17,8 @@ const routes = [
         ]
       },
       { path: 'help', name:'help', component: () => import('pages/help.vue'), meta:'adm'},
+      { path: 'privacy', name:'privacy', component: () => import('pages/privacy.vue'), meta:'adm'},
+      { path: 'terms', name:'terms', component: () => import('pages/terms.vue'), meta:'adm'},
       { path: 'login', name:'login',component: () => import('pages/login.vue'), meta:'an' },
       { path: 'signup', name:'signup',component: () => import('pages/signup.vue'), meta:'an' },
       { path: 'forgot', name:'forgot',component: () => import('pages/forgot.vue'), meta:'an' },

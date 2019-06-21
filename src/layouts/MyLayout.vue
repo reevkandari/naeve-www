@@ -86,7 +86,8 @@ export default {
         {name:'Log-In',path:'/login'},
         {name:'Create an account',path:'/signup'},
         //{name:'Browse for events',path:'/events'},
-        //{name:'Privacy',path:'/privacy'}
+        {name:'Privacy Policy',path:'/privacy'},
+        {name:'Terms & Conditions',path:'/terms'}
       ]
       }
   },
