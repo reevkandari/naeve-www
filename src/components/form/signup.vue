@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="row">
-      <q-input class="col-6 q-pr-sm" outlined v-model="form.firstName" label="First Name" dense/>
-      <q-input class="col-6 q-pl-sm" outlined v-model="form.lastName" label="Last Name" dense/>
+      <q-input class="col-6 q-pr-xs" outlined v-model="form.firstName" label="First Name" dense/>
+      <q-input class="col-6" outlined v-model="form.lastName" label="Last Name" dense/>
     </div>
 
-    <q-input class="col-6 q-my-sm" outlined mask=##########
+    <q-input class="col-6 q-my-sm" outlined mask="#### ## ####"
       v-model="form.mobile" placeholder="Mobile Number" dense prefix="+91">
       <template v-slot:prepend>
         <q-icon name="smartphone"/>
@@ -13,9 +13,9 @@
     </q-input>
 
     <div class="row q-my-sm">
-      <q-input outlined dense class="col-6 q-pr-sm" v-model="form.dob"
+      <q-input outlined dense class="col-6 " v-model="form.dob"
       label="Date of Birth" type="date" stack-label />
-      <q-select outlined dense class="col-6 q-pl-sm" v-model="form.gender"
+      <q-select outlined dense class="col-6 q-pl-xs" v-model="form.gender"
       label="Gender" :options="['Female','Male']" stack-label />
     </div>
 

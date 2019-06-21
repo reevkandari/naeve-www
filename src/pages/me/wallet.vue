@@ -1,6 +1,6 @@
 <template>
 <div class="no-padding">
-  <q-list v-if="wallet.length > 0">
+    <q-list v-if="wallet.length > 0" separator bordered>
     <q-item clickable v-for="(item,index) in wallet" :key="index" class="row"  >
               <div class="col-12 row">
                   <div class="col-7">

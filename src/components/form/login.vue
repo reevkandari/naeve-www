@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-input outlined v-model="form.accName" label="Phone or E-Mail" dense/>
+    <q-input outlined v-model="form.accName" label="Mobile or E-Mail" dense/>
 
     <q-input dense outlined label="Password" class="q-mt-sm"
       v-model="form.pass" :type="isPwd ? 'password' : 'text'">

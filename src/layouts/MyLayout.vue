@@ -111,6 +111,7 @@ export default {
 </script>
 
 <style>
+
 .footerChip{
   font-size: 1.1em;
   text-decoration: none;
@@ -127,6 +128,11 @@ export default {
 
 .page{
   min-height: 100vh;
+}
+@media only screen and (max-width: 1200px) {
+  .footerChip{
+    font-size: 0.95em;
+  }
 }
 </style>
 

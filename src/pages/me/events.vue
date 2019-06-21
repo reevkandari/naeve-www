@@ -1,6 +1,6 @@
 <template>
 <div class="no-padding">
-    <q-list separator bordered>
+    <q-list v-if="events.length > 0" separator bordered>
         <q-item clickable v-for="(item,index) in events" :key="index" 
         :to="{name:'event',params:{id:item.id}}" class="row"> 
             
@@ -14,10 +14,11 @@
                 <q-chip class="col-auto text-capitalize absolute-right" 
                 dense square >{{item.status}}</q-chip>
             </div>
-
-
         </q-item>
     </q-list>
+  <div v-else class="text-center text-subtitle1 q-pa-sm">
+    No event history found
+  </div>    
 </div>
 </template>
 

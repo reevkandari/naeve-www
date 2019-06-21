@@ -21,8 +21,8 @@
     </div>
 </div>
 <div v-else>
-    <div class="q-pa-md bg-white shadow-3 row full-width">
-        <div class="youHavent">
+    <div class="q-pa-md q-my-md bg-white shadow-3 row full-width">
+        <div class="youHavent ">
             Nothing To show
         </div> 
     </div>
