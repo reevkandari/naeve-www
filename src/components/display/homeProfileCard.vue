@@ -2,7 +2,7 @@
 <div class="row items-center">
     <div class="col-4 row">
         <q-avatar class="q-pr-xs" size="80px">
-            <img :src="profile.avatar | ourMedia" /> 
+            <q-img :src="profile.avatar | ourMedia" /> 
         </q-avatar>          
     </div>
 

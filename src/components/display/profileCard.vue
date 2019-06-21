@@ -3,17 +3,18 @@
     <div class="row bg-orange-9 shadow-3 q-pa-xs text-center">
         <span class="col title">About the {{(user.recruiter) ? 'Recruiter' : 'User'}}</span>
     </div>
-    <div class="row items-center q-pa-xs q-pt-md ">
-        
-        <q-chip color="yellow-7" class="col-auto">
-            <q-avatar size="50px">
-                <img :src="user.avatar | ourMedia"/>
-            </q-avatar>
-            <router-link class="noDeco" :to="{name:'user',params:{id:user.user_id}}" >
-                <span class="name">{{user.name | formatName}}  </span>
-            </router-link>                   
-        </q-chip>
-        <div class="q-mt-sm">
+    <div class="q-px-sm q-my-sm">
+        <div class="row items-center">
+            <div class="col-auto">
+                <q-avatar size="60px">
+                    <q-img :src="user.avatar | ourMedia"/>
+                </q-avatar>
+            </div>                  
+            <router-link class="q-pl-sm col-auto noDeco" :to="{name:'user',params:{id:user.user_id}}" >
+                <span class="name">{{user.name || fullName}} </span>
+            </router-link>  
+        </div>       
+        <div class="full-width q-mt-sm">
             <div class="q-px-sm bio">
                 {{user.bio}}
             </div>
@@ -44,8 +45,9 @@ export default {
 }
 .name{
     font-size: 1.3em;
-    font-weight: 400;
-    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-family: 'Raleway';
+    word-wrap: break-word;
 }
 .bio{
     font-size: 1.0em;
