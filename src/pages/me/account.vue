@@ -48,6 +48,7 @@
   <div class="col-xl-6 col-lg-6 col-md-6 col-12" >
     <div :class="{'q-pr-md q-pt-sm':$q.platform.is.desktop,'q-pt-sm':$q.platform.is.mobile}" >
       <messageUs />
+      <logOut class="q-mt-sm" />
     </div>
   </div>
   <div class="col-12 ending q-mt-md">
@@ -58,9 +59,12 @@
 
 <script>
 import messageUs from 'components/form/messageUs';
+import logOut from 'components/form/logOut';
+
 export default {
     components:{
-        messageUs
+        messageUs,
+        logOut
     },
   data(){
     return{

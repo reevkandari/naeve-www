@@ -1,6 +1,6 @@
 <template>
 <q-page>
-  <q-no-ssr>
+<q-no-ssr>
   <div class="row">
 
     <!-- Left side widgets mobile top -->

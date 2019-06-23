@@ -10,7 +10,7 @@
           </q-toolbar-title>
 
           <q-space />
-          <q-tabs shrink inline-label>
+          <q-tabs >
             <q-route-tab dense shrink v-for="(item,index) in navigation" :key="index" 
              :name=item.name  :to=item.to :label=item.label :icon=item.icon >
              <q-badge v-if="showBadge(item)" color="orange-5" text-color="black">

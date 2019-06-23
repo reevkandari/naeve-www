@@ -126,10 +126,12 @@ module.exports = function (ctx) {
 
     ssr: {
       pwa: false,
+      /*
       componentCache: {
         max: 0,
         maxAge: 80000//900000
       },      
+      */
     },
 
     pwa: {

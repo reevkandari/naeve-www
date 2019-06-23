@@ -1,6 +1,7 @@
 <template>
 <q-no-ssr>
-<q-page>
+<q-page class="flex">
+
 <div class="row justify-center">
     <div class="col-md-8 col-lg-8 col-xl-8 col-12">
         <div class="bg-white shadow-5">
@@ -36,13 +37,13 @@
             </div>
         </div>        
     </div>
-</div>
-</q-page>
 <!--SPINNER LOADING-->
 <q-inner-loading :showing="loading">
     <q-spinner-gears size="80px" color="indigo" />
 </q-inner-loading>        
 <!--SPINNER LOADING-->
+</div>
+</q-page>
 </q-no-ssr>
 </template>
 
@@ -88,13 +89,14 @@ export default {
                 toBeMarked.push( this.alerts[index].id )
             }
             else{
-                for(var i=0; i<this.alerts.length;i++){
+                for(var i=0; i<this.alerts.length; i++){
                     if(!this.alerts[i].seen){
                         this.alerts[i].seen = true;
                         toBeMarked.push(this.alerts[i].id);
                     }
                 }
             }
+            if(toBeMarked.length ==0 ) return;
             this.$store.commit('user/unAlert',toBeMarked.length);
             await this.$axios.post('mark_alert_seen',{alertList:toBeMarked});
         }

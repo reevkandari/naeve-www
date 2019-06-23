@@ -2,11 +2,11 @@ var isNode = require('detect-node');
 import axios from 'axios';
 const api = axios.create();
 
-export default async ({ Vue, ssrContext, store, router}) => {
+export default async ({ Vue, ssrContext, store}) => {
   api.defaults.baseURL = isNode ? process.env.api_ip : process.env.api_proxy_path;
-  
   api.interceptors.request.use(config=>{
     if(isNode){
+      console.log(ssrContext.req.headers);
       config.headers = ssrContext.req.headers;
       config.headers.remote_addr = ssrContext.req.connection.remoteAddress;
     }
@@ -21,9 +21,10 @@ export default async ({ Vue, ssrContext, store, router}) => {
   
   
   function handleAuth(res){
-    if(typeof res == "undefined") return res;
-    if(isNode && (typeof res.headers["set-cookie"] != "undefined")) {
-      ssrContext.res.header("set-cookie",res.headers["set-cookie"] );
+    if(res == undefined ) return false;
+    ///console.log(res.headers["set-cookie"]);
+    if(isNode && res.headers["set-cookie"] ) {
+      ssrContext.res.set("set-cookie", res.headers["set-cookie"] );
     }
     var authStatus = (res.headers.auth == 'true');
     //if(store.state.user.loggedIn);

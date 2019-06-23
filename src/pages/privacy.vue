@@ -1,5 +1,5 @@
 <template>
-<q-page>
+<q-page class="q-px-xs">
 
 <h1>Privacy Policy for Naeve</h1>
 
@@ -54,7 +54,3 @@ export default {
 
 }
 </script>
-
-<style>
-
-</style>

@@ -1,7 +1,7 @@
 <template>
 <div class="row">
     <div class="col-xl-8 col-lg-8 col-md-8 col-12">
-        <div v-for="item in helpItems" :key="item" class="">
+        <div v-for="(item,index) in helpItems" :key="index">
             <q-expansion-item  class="bg-white shadow-3 label" :label="item.label">
                     <div class="q-pa-md content">
                         {{item.content}}

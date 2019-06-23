@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import {api} from  'boot/axios'
 import routes from './routes'
+var isNode = require('detect-node');
 
 Vue.use(VueRouter)
 
@@ -23,8 +24,9 @@ export default function ( { store/*, ssrContext */} ) {
   })
 
   Router.beforeEach(async (to, from, next)=>{
+    console.log(isNode, store.state.user.profile.name || 'noone');
     try{
-      if(!store.state.profile){
+      if(!store.state.user.profile){
         var res = await api.get('me');
         store.commit('user/setProfile',res.data);      
       }
