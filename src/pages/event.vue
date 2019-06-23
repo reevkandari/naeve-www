@@ -1,6 +1,7 @@
 <template>
 <q-page>
 <q-no-ssr>
+
 <div v-if="event" class="row justify-center" 
 :class="{'q-mx-md':$q.platform.is.mobile, 'q-my-md': $q.platform.is.mobile}">    
     <div class="col-xl-3 col-lg-3 col-md-3 col-12">
@@ -36,6 +37,7 @@
 
 </q-no-ssr>
 </q-page>
+
 </template>
 <script>
 import profileCard from 'components/display/profileCard';

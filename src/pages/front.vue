@@ -1,5 +1,6 @@
 <template>
 <q-page class="caraousel">
+<q-no-ssr>
    <div class="row q-pb-md">
        <div class="col-12 ">
             <q-carousel  animated v-model="slide" navigation infinite
@@ -54,6 +55,7 @@
 </div>
 </div>
 
+</q-no-ssr>
 </q-page>
 </template>
 

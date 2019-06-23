@@ -1,6 +1,7 @@
 <template>
-<q-page class="q-px-xs">
-
+<q-page>
+<q-no-ssr>
+<div  class="q-px-xs">
 <h1>Privacy Policy for Naeve</h1>
 
 <p>At naeve, accessible from https://naeve.co, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by naeve and how we use it.</p>
@@ -45,8 +46,10 @@
 
 <p>By using our website, you hereby consent to our Privacy Policy and agree to its Terms and Conditions.</p>
 
-
+</div>
+</q-no-ssr>
 </q-page>
+
 </template>
 
 <script>

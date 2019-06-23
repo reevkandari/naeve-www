@@ -1,5 +1,7 @@
 <template>
 <q-page>
+<q-no-ssr>
+
 <div class="row justify-center">
     <div class="col-lg-2 col-xl-2 col-md-2 col-12" >
         <div class="sticky">
@@ -9,8 +11,7 @@
                     <q-route-tab class="name"  dense v-for="(item,index) in navigation" :key="index" 
                     :name=item.name  :to={name:item.to}  :label=item.name :icon=item.icon 
                     :class="{'q-router-link--exact-active q-router-link--active q-tab--active':
-                    ($route.name=='me' && item.to=='account')}" >
-                    </q-route-tab>
+                    ($route.name=='me' && item.to=='account')}" />
 
             </q-tabs> 
         </div>     
@@ -27,15 +28,15 @@
     </div>
 
 </div>
+</q-no-ssr>
 </q-page>
+
 </template>
 
 <script>
 
 export default {
-    components:{
-        
-    },
+
     data(){
         return{
             navigation:[

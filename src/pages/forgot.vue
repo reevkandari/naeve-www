@@ -1,5 +1,7 @@
 <template>
-  <q-page>
+<q-page>
+<q-no-ssr>
+
     <div class="row justify-center q-mt-lg">
       <div class="col-xl-6 col-lg-6 col-md-6 col-12 bg-white shadow-3 q-pa-md">
         <div class="text-h6 q-mb-sm text-center">Reset Your Password</div>
@@ -59,7 +61,9 @@
         </div>
       </div>
     </div>
-  </q-page>
+  </q-no-ssr>
+</q-page>
+
 </template>
 
 <script>

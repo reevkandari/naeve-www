@@ -24,23 +24,19 @@ export default function ( { store/*, ssrContext */} ) {
   })
 
   Router.beforeEach(async (to, from, next)=>{
-    console.log(isNode, store.state.user.profile.name || 'noone');
-    try{
-      if(!store.state.user.profile){
-        var res = await api.get('me');
-        store.commit('user/setProfile',res.data);      
-      }
-      var loggedIn = store.state.user.loggedIn;
-      if (to.meta.includes('adm')) return next();
-      if(to.meta.includes('an') ){
-        return (loggedIn) ? next('/home') : next();
-      }else if (to.meta.includes('ay')) {
-        return (loggedIn) ? next() : next('/login');
-      }
-    }catch(err){
-      return next();
+    if(isNode) return next();
+    if(!store.state.user.profile){
+      var res = await api.get('me');
+      store.commit('user/setProfile',res.data);      
     }
+    var loggedIn = store.state.user.loggedIn;
 
+    if (to.meta.includes('adm')) return next();
+    if(to.meta.includes('an') ){
+      return (loggedIn) ? next('/home') : next();
+    }else if (to.meta.includes('ay')) {
+      return (loggedIn) ? next() : next('/login');
+    }    
 
   });
 

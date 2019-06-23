@@ -1,4 +1,6 @@
 <template>
+<q-page>
+<q-no-ssr>
 <div class="row">
     <div class="col-xl-8 col-lg-8 col-md-8 col-12">
         <div v-for="(item,index) in helpItems" :key="index">
@@ -10,6 +12,8 @@
         </div>
     </div>
 </div>
+</q-no-ssr>
+</q-page>
 </template>
 
 <script>

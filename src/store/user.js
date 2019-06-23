@@ -2,9 +2,13 @@ export default {
     namespaced: true,
     state: () => ({
         profile:false,
-        loggedIn:false
+        loggedIn:false,
+        enRout:false
     }),
     getters:{
+        enRoute(state){
+            return state.enRoute;
+        },
         loggedIn(state){
             return state.loggedIn;
         },
@@ -19,6 +23,9 @@ export default {
         }                              
     },
     mutations:{
+        enRoute (state,data) {
+            state.loggedIn = false;
+        },
         auth (state,data) {
             if(!data) state.profile = false;
             state.loggedIn = data;

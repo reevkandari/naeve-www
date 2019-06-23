@@ -1,6 +1,6 @@
 <template>
+<q-page>
 <q-no-ssr>
-<q-page class="flex">
 
 <div class="row justify-center">
     <div class="col-md-8 col-lg-8 col-xl-8 col-12">
@@ -43,8 +43,9 @@
 </q-inner-loading>        
 <!--SPINNER LOADING-->
 </div>
-</q-page>
 </q-no-ssr>
+</q-page>
+
 </template>
 
 <script>

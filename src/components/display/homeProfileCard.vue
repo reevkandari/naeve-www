@@ -49,9 +49,7 @@ export default {
         }
     },
     created(){
-        console.log('dam');
         this.fetchStats();
-        console.log('dam');        
     }
 }
 </script>

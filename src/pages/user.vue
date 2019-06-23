@@ -1,6 +1,7 @@
 <template>
 <q-page>
-<q-no-ssr class="">
+<q-no-ssr>
+
 <div v-if="profile" class="row justify-center" 
 :class="{'q-mx-sm q-mt-sm':$q.platform.is.mobile}">    
     <div class="col-xl-3 col-lg-3 col-md-3 col-12">

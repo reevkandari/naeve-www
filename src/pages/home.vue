@@ -1,6 +1,7 @@
 <template>
 <q-page>
 <q-no-ssr>
+
   <div class="row">
 
     <!-- Left side widgets mobile top -->
@@ -30,7 +31,7 @@
               <createEvent class="bg-white shadow-3" @close="createEvent=false" />
             </div>
             <div v-else>
-              <paginateEvents :inp=paginateInp class="q-mx-sm q-mb-md"  />        
+                <paginateEvents :inp=paginateInp class="q-mx-sm q-mb-md"  />    
             </div>             
             </div>          
           </div>
@@ -48,8 +49,10 @@
     <!-- Central part -->
 
 </div>
+
 </q-no-ssr>
 </q-page>
+
 </template>
 
 <script>

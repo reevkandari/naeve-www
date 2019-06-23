@@ -67,7 +67,8 @@ module.exports = function (ctx) {
         'QInnerLoading',
         'QSpinnerGears',
         'QTab',
-        'QExpansionItem'
+        'QExpansionItem',
+        'QScrollArea'
       ],
 
       directives: [

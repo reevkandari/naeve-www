@@ -14,7 +14,7 @@
           @click="act(true)" />
           <q-btn dense color="primary" class="text-capitalize" 
           label="No, Just Here" v-close-popup 
-          @click="act(true)" />
+          @click="act(false)" />
         </q-card-actions>
       </q-card>    
 </q-dialog>
@@ -27,6 +27,13 @@ export default {
         return{
             modal:false,
             all:false
+        }
+    },
+    methods:{
+        async act(all=false){
+            var res = await this.$axios.post('logout',{all:all});
+            this.$q.notify('You have been Logged Out');
+            this.$router.push('/');
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fff" class="bg">
     <q-header >
-      <q-toolbar class="row bg-grey-9" :class="{'justify-center':$q.platform.is.desktop}">
+      <q-toolbar class="row bg-grey-9 toolbar" :class="{'justify-center':$q.platform.is.desktop}">
         <div class="col-lg-10 col-md-10 col-xl-10 col-12 row items-center">
           <q-toolbar-title class="col-3 siteName">
             <router-link class="noDeco siteName" to="/">
@@ -10,22 +10,24 @@
           </q-toolbar-title>
 
           <q-space />
-          <q-tabs >
-            <q-route-tab dense shrink v-for="(item,index) in navigation" :key="index" 
+          <q-no-ssr>
+          <q-tabs>
+            <q-route-tab v-for="(item,index) in navigation" :key="index" 
              :name=item.name  :to=item.to :label=item.label :icon=item.icon >
-             <q-badge v-if="showBadge(item)" color="orange-5" text-color="black">
-               {{me[item.name]}}
-             </q-badge>
+              <q-badge v-if="showBadge(item)" color="orange-5" text-color="black">
+                {{me[item.name]}}
+              </q-badge>
             </q-route-tab>             
           </q-tabs>
-
+          </q-no-ssr>
         </div>
       </q-toolbar>
     </q-header>
 
-    <q-page-container class="page row justify-center screen-height">
+    <q-page-container class="page row justify-center">
       <router-view class="col-xl-10 col-lg-10 col-md-10 col-12 justify-center"
-       :class="{'q-py-md':$q.platform.is.desktop}" />    
+       :class="{'q-py-md':$q.platform.is.desktop}" />
+
     </q-page-container>
 
 
@@ -110,8 +112,10 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+.toolbar{
+  width:100%;
+}
 .footerChip{
   font-size: 1.1em;
   text-decoration: none;
@@ -134,6 +138,7 @@ export default {
     font-size: 0.95em;
   }
 }
+
 </style>
 
 

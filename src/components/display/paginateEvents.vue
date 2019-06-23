@@ -1,5 +1,6 @@
 <template>
 <div>
+    
 <!-- Upper Toolbar -->
 <div class="row items-center q-pa-xs bg-white shadow-3">    
     <div class="col-9 row">
@@ -14,7 +15,6 @@
     </div>
 </div>    
 <!-- Event detail Cards -->
-    
 <div v-if="currPageEvents.length > 0">
     <div v-for="(item,index) in currPageEvents" :key="index" class="q-my-md">
         <eventCard :inp=item class="bg-white shadow-3" />
