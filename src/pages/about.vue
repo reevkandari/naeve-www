@@ -2,7 +2,7 @@
 <q-page>
 <div class="row">
 
-    <div class="col-xl-6 col-lg-6 col-md-6 col-12 row justify-center">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-12 row justify-center q-mt-md">
         <div class="col-11">
             
             <div class="bg-white shadow-3 q-pa-md">
@@ -22,14 +22,15 @@
         </div>
     </div>
     <div class="col-xl-6 col-lg-6 col-md-6 col-12 row justify-center">
-        <div class="col-11 bg-white shadow-3 q-pa-md">
+        <div class="col-11 bg-white shadow-3 q-pa-md q-my-md" >
             <div class="text-subtitle1 text-bold" >Send us a message</div>
             <div class="text-weight-light">(Do mention your email or phone number)</div>
             <messageUs class="q-py-md" />
             <q-separator />
             <div class="text-subtitle1 text-bold q-py-md">Give us a Call</div>
             <div class="text-weight-light">
-                +91 79770 39793 <br />
+                +91 79770 39793 
+                <br />
                  +91 84509 38298
             </div>
         </div>
