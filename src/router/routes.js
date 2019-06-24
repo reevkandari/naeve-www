@@ -16,6 +16,7 @@ const routes = [
           { path: 'wallet', name:'wallet',component: () => import('pages/me/wallet'), meta:'ay' },
         ]
       },
+      { path: 'about', name:'about', component: () => import('pages/about.vue'), meta:'adm'},
       { path: 'help', name:'help', component: () => import('pages/help.vue'), meta:'adm'},
       { path: 'privacy', name:'privacy', component: () => import('pages/privacy.vue'), meta:'adm'},
       { path: 'terms', name:'terms', component: () => import('pages/terms.vue'), meta:'adm'},

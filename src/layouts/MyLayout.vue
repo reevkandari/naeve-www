@@ -81,15 +81,15 @@ export default {
         {name:"me",to:"/me",icon:"person"}
       ],
       footerMenu: [
-        {name:'About-Us',path:'/about'},
-        {name:'Help',path:'/help'},
-        //{name:'Work With Us',path:'/work-with-us'},
+        {name:'About',path:'/about'},
         {name:'Become a Recruiter',path:'/help'},
         {name:'Log-In',path:'/login'},
         {name:'Create an account',path:'/signup'},
         //{name:'Browse for events',path:'/events'},
         {name:'Privacy Policy',path:'/privacy'},
-        {name:'Terms & Conditions',path:'/terms'}
+        {name:'Terms & Conditions',path:'/terms'},
+        {name:'Help',path:'/help'}
+
       ]
       }
   },
