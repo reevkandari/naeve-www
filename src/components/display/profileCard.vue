@@ -4,7 +4,7 @@
         <span class="col title">About the {{(user.recruiter) ? 'Recruiter' : 'User'}}</span>
     </div>
     <div class="q-px-sm q-my-sm">
-        <div class="row items-center">
+        <div class="row items-center q-pb-sm">
             <div class="col-auto">
                 <q-avatar size="60px">
                     <q-img :src="user.avatar | ourMedia"/>
@@ -14,7 +14,7 @@
                 <span class="name">{{user.name || fullName}} </span>
             </router-link>  
         </div>       
-        <div class="full-width q-mt-sm">
+        <div class="full-width">
             <div class="q-px-sm bio">
                 {{user.bio}}
             </div>

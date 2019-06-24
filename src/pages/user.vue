@@ -25,7 +25,7 @@
 </div>    
 
 <div v-else class="row justify-center">
-    <img class="col-2" src="~assets/sad.svg" />
+      <notFound class="q-mt-xl" />
 </div>
 
 </q-no-ssr>
@@ -38,6 +38,7 @@ import profileDetails from 'components/display/profileDetails'
 import trendingEvents from 'components/display/trendingEvents'
 import mediaView from 'components/display/mediaView'
 import {pick} from 'lodash';
+import notFound from 'components/display/notFound';
 
 export default{
     preFetch ({ store, currentRoute }) {
@@ -65,6 +66,7 @@ export default{
         }
     },
     components:{
+        notFound,
         mediaView,
         profileCard,
         profileDetails,

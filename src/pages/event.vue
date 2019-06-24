@@ -28,7 +28,7 @@
 
 
 <div v-else class="row justify-center">
-    <img class="col-2" src="~assets/sad.svg" />
+  <notFound class="q-mt-xl" />
 </div>
 
 <q-dialog  v-model="manageModal" maximized fullscreen >
@@ -48,13 +48,7 @@ import applyForEvent from  'components/display/applyForEvent';
 import eventStats from 'components/display/eventStats';
 import manage from 'components/display/manage';
 import {pick, merge} from  'lodash';
-import {
-  Loading,
-
-  // optional!, for example below
-  // with custom spinner
-  QSpinnerGears
-} from 'quasar'
+import notFound from 'components/display/notFound';
 
 export default{
     preFetch ({ store, currentRoute }) {
@@ -79,6 +73,7 @@ export default{
         }
     },
     components:{
+        notFound,
         eventDetails,
         profileCard,
         eventCard,
