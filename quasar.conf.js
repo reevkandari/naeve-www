@@ -4,7 +4,6 @@
 module.exports = function (ctx) {
   return {
     preFetch: true,
-    // app boot fi (/src/boot)
     // --> boot files are part of "main.js"
     boot: [
       'axios',
@@ -102,7 +101,7 @@ module.exports = function (ctx) {
       // vueCompiler: true,
       gzip: true,
       // analyze: true,
-      // extractCSS: false,
+      extractCSS: false,
       extendWebpack (cfg) {
       }
     },
