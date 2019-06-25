@@ -5,10 +5,10 @@
       <q-input class="col-6" outlined v-model="form.lastName" label="Last Name" dense/>
     </div>
 
-    <q-input class="col-6 q-my-sm" outlined mask="#### ## ####"
-      v-model="form.mobile" placeholder="Mobile Number" dense prefix="+91">
+    <q-input class="col-6 q-my-sm" outlined :type="$q.platform.is.desktop ? 'text' : 'number'" 
+    mask="##########" v-model="form.mobile" placeholder="Mobile Number" dense prefix="+91">
       <template v-slot:prepend>
-        <q-icon name="smartphone"/>
+        <q-icon name="smartphone" />
       </template>
     </q-input>
 
@@ -89,6 +89,7 @@ export default {
       
     }
   },
+
   methods:{
     async trySignUp(){
       this.loading = true;
