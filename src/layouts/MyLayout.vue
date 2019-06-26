@@ -26,8 +26,8 @@
 
     <q-page-container class="page row justify-center">
       <router-view class="col-xl-10 col-lg-10 col-md-10 col-12 justify-center"
-       :class="{'q-py-md':$q.platform.is.desktop}" />
-
+       :class="{'q-py-md':$q.platform.is.desktop}" 
+       v-touch-swipe.mouse.right.left="handleSwipe" />
     </q-page-container>
 
 
@@ -105,6 +105,30 @@ export default {
     }
   },
   methods:{
+    handleSwipe(evt){
+      var dirc = evt.direction;
+      var currPath = this.$route.path;
+      var totalNavItems =this.navigationExisting.length;
+      for(var i=0; i < totalNavItems ;i++){
+        var currItem = this.navigationExisting[i];
+        //if looped path is not the current path continue
+        if(currItem.to != currPath) continue;        
+        //if swiped to left and this is not the last item then move to the next path
+        if(dirc=='left'){
+          if( i!= totalNavItems-1) {
+            this.$router.push(this.navigationExisting[i+1].to);
+            break;
+          }
+        }
+        //if swiped to left and this is not the first item then move to the previous path
+        else{
+          if( i!= 0) {
+            this.$router.push(this.navigationExisting[i-1].to);
+            break;
+          }
+        }
+      }
+    },
     showBadge(item){
       return (item.name=='alerts' && this.me.alerts>0);
     }

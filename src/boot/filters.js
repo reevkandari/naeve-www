@@ -23,7 +23,7 @@ function timeRelative(val){
     
     else if(diffDays < 1 ) return 'Today';
     else if(diffDays < 7 ) return diffDays + " days ago";
-    else return 'on ' + date.formatDate(value, 'Do MMMM YYYY');
+    else return 'on ' + date.formatDate(val, 'Do MMMM YYYY');
 
 }
 
