@@ -10,7 +10,7 @@
         <div class="col-12">
             <div class="text-h6">Gender:</div>
             <q-separator/>
-            <div class="text-body2">Male</div>
+            <div class="text-body2 text-capitalize">{{profile.gender}}</div>
         </div>
 
         <div class="col-12">
@@ -23,7 +23,6 @@
                 </q-chip>
             </div>
         </div>
-
     </div>
 
 </div>

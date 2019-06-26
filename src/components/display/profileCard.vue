@@ -11,7 +11,7 @@
                 </q-avatar>
             </div>                  
             <router-link class="q-pl-sm col-auto noDeco" :to="{name:'user',params:{id:user.user_id}}" >
-                <span class="name">{{user.name || fullName}} </span>
+                <span class="name text-capitalize">{{user.name || fullName}} </span>
             </router-link>  
         </div>       
         <div class="full-width">

@@ -1,5 +1,5 @@
 <template>
-<q-page>
+<q-page class="q-px-sm">
 <q-no-ssr>
 
 <h2><strong>Terms and Conditions</strong></h2>

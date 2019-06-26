@@ -34,7 +34,7 @@ export default {
                 content: 'Backing out at the event will result in a 10% penalty and might also hurt your ratings.'},
 
                 {label: 'What if the user doesnt show up ?',
-                content: 'If a user doesnt shows up at the event, theu account will be fined. Meanwhile we will send an immediate replacement'},
+                content: 'If a user doesnt shows up at the event, they will have to pay a penalty. Meanwhile we will send an immediate replacement'},
 
                 {label: 'How to become a recruiter',
                 content: 'You need to contact us via mail or phone(7977039793) and we will set you up within a few business hours'},
