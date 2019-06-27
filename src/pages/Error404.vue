@@ -1,6 +1,6 @@
 <template>
-<q-page>
-  <notFound class="q-mt-xl" />
+<q-page >
+  <notFound class="q-mt-xl q-pt-xl" />
 </q-page> 
 </template>
 

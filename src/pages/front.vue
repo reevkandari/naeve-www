@@ -5,11 +5,8 @@
        <div class="col-12 ">
             <q-carousel  animated v-model="slide" navigation infinite
             :autoplay=2300>
-            
-            <q-carousel-slide :name="1" img-src="../statics/banner1.png" />
-            <q-carousel-slide :name="2" img-src="../statics/banner2.jpeg" />
-            <q-carousel-slide :name="3" img-src="../statics/banner3.png" />
-
+            <q-carousel-slide v-for="index in 3" :key="index" 
+            :name=index :img-src="'statics/banner/'+index+'.png'" />
             </q-carousel>
        </div>
 </div>
@@ -21,16 +18,9 @@
 <div class="row justify-center">
 <div class="col-xl-10 col-lg-10 col-md-10 col-12 row  justify-center">
        <div class="col-lg-2 col-md-2 col-xl-2 col-sm-3 col-xs-3 col-4 q-pa-md"
-       v-for="(city, index) in cities" v-bind:key="index">
+       v-for="(item, index) in eventTypes" v-bind:key="index">
            <q-card class="my-card">
-                <q-img
-                    :src="city.image"
-                    basic
-                >
-                    <div class="absolute-full text-subtitle2 flex flex-center">
-                    
-                    </div>
-                </q-img>
+                <q-img :src="'statics/event_types/'+item.image" basic />
             </q-card>
        </div>    
 </div>
@@ -43,8 +33,8 @@
     v-for="(step, index) in steps" v-bind:key="index" :class="{'q-pr-md':$q.platform.is.desktop}">
         <q-card class="my-custom-card shadow-8 q-mb-md">
             <q-card-section>
-            <img :src="step.src" style="height: 150px; width: 100%; text-align: vertical;"
-            >
+            <img :src="'statics/process/'+step.src" 
+            style="height: 150px; width: 100%; text-align: vertical;">
             </q-card-section>
             <q-card-section>
                 <div class="text-h6 text-center text-weight-light q-pb-xs">{{step.title}}</div>
@@ -71,32 +61,32 @@ export default {
     data(){
         return{
             slide: 1,
-            cities: [
-                {name: 'Catering', image: '../statics/catering.jpg'},
-                {name: 'Marketing', image: '../statics/marketing.jpg'},
-                {name: 'Volunteer', image: '../statics/volunteer.jpg'},
-                {name: 'Survey', image: '../statics/survey.jpg'},
-                {name: 'Entertainer', image: '../statics/entertainment.jpg'},
-                {name: 'Assisting', image: '../statics/help.jpg'}
+            eventTypes: [
+                {name: 'Catering', image: 'catering.jpg'},
+                {name: 'Marketing', image: 'marketing.jpg'},
+                {name: 'Volunteer', image: 'volunteer.jpg'},
+                {name: 'Survey', image: 'survey.jpg'},
+                {name: 'Entertainer', image: 'entertainment.jpg'},
+                {name: 'Assisting', image: 'help.jpg'}
             ],
             steps: [
                 {
-                    src: '../statics/create.jpg',
+                    src: 'create.jpg',
                     title: 'Create an account',
                     caption: 'Fill in your details and apply for an event'
                 },
                 {
-                    src: '../statics/apply.jpg',
+                    src: 'apply.jpg',
                     title: 'Apply for an event',
                     caption: 'Select the appropriate event for which you are eligible'
                 },
                 {
-                    src: '../statics/attend.jpg',
+                    src: 'attend.jpg',
                     title: 'Attend the event',
                     caption: 'Be on time and perform the necessary tasks'
                 },
                 {
-                    src: '../statics/paid.jpg',
+                    src: 'paid.jpg',
                     title: 'Get Paid',
                     caption: 'On successful completion of the event you will get paid.'
                 }

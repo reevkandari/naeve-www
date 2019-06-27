@@ -25,7 +25,7 @@
 </div>    
 
 <div v-else class="row justify-center">
-      <notFound class="q-mt-xl" />
+      <notFound class="q-mt-xl q-pt-xl" />
 </div>
 
 </q-no-ssr>

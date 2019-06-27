@@ -1,10 +1,10 @@
 <template>
   <div class="text-center">
     <p>
-      <img src="~assets/sad.svg" 
-      style="width:30vw;max-width:150px;">
+      <img src="~assets/404_not_found.svg" 
+      style="width:350px;max-width:90vw;">
     </p>
-    <p class="text-faded">Sorry, nothing here.. <strong>(404)</strong></p>
+    <p class="text-faded">The page doesn't exist or may be temporarily down</p>
 
   </div>
 </template>

@@ -56,15 +56,15 @@ export default {
         },
         og_title:{
             property:'og:title',
-            content:'Get paid working for Events'
+            content:'Attend Events and make Money'
         },  
         og_description:{
             property:'og:description',
-            content:'Volunteer for events and make some quick cash'
+            content:'Volunteer for Events & Make Money'
         },
         og_image:{
           property:'og:image',
-          content:process.env.site_url + 'statics/logo.png'
+          content:process.env.site_url + 'statics/site/logo.png'
         }        
       }
     }

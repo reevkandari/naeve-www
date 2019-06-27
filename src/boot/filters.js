@@ -44,7 +44,7 @@ function formatName(val){
     return val.toLowerCase().replace(/(^| )(\w)/g, s => s.toUpperCase())
 }
 function ourMedia(value){
-    if(value == null) return 'statics/user.png';
+    if(value == null) return 'statics/site/user.png';
     else if(typeof value === 'object') return value;
     else if (value){
         if(value.includes(':')) return value;
